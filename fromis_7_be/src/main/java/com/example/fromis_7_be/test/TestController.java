@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("")
+@RequestMapping("/test")
 public class TestController {
 
-    @GetMapping
+    @GetMapping("")
     public String test() {
         return "test";
     }
