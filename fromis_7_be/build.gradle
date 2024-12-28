@@ -40,6 +40,9 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.13.0'
     //S3 이용을 위한 dependency 추가
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.4'
+    implementation 'org.apache.httpcomponents.core5:httpcore5:5.3'
+    implementation 'org.jsoup:jsoup:1.15.3'
 }
 
 tasks.named('test') {
