@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.piece.entity;
 
+import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -43,8 +44,21 @@ public class Piece {
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserPiece> userPieces = new ArrayList<>();
 
+    @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Category> categories = new ArrayList<>();
 
-        public static Piece from(String title, List<String> memberNames, String color,
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.modifiedAt = LocalDateTime.now();
+    }
+
+
+    public static Piece from(String title, List<String> memberNames, String color,
                              Integer startYear, Integer startMonth, Integer startDay,
                              Integer endYear, Integer endMonth, Integer endDay) {
         return Piece.builder()
@@ -73,15 +87,6 @@ public class Piece {
         this.endMonth = endMonth;
         this.endDay = endDay;
         this.modifiedAt = LocalDateTime.now(); // 수정 시간 갱신
-    }
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.modifiedAt = LocalDateTime.now();
     }
 
 }

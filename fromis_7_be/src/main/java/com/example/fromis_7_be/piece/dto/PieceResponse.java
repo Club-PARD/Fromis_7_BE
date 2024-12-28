@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.piece.dto;
 
+import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.piece.entity.Piece;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class PieceResponse {
         private Integer endYear;
         private Integer endMonth;
         private Integer endDay;
+        private List<Category> categories;
         //private int likeCount;
         //private boolean likedByCurrentUser;
 
@@ -41,5 +43,10 @@ public class PieceResponse {
                     .endDay(piece.getEndDay())
                     .build();
         }
+        public void setCategories(List<Category> categories) {
+            this.categories = categories;
+        }
     }
+
+
 }
