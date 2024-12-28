@@ -10,5 +10,6 @@
         <module name="fromis_7_be.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>
