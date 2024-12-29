@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/list")
+@RequestMapping("/lists")
 public class ListupController {
     private final ListupService listupService;
     private final CategoryRepository categoryRepository;
