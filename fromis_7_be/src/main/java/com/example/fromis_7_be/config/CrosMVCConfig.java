@@ -15,5 +15,4 @@ public class CrosMVCConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowedOrigins("http://localhost:3000");
     }
-
 }
