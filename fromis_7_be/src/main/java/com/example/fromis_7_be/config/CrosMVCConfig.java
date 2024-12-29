@@ -14,7 +14,6 @@ public class CrosMVCConfig implements WebMvcConfigurer {
                 .exposedHeaders("Set-Cookie")
                 .allowedOrigins("http://localhost:3000")
                 .allowedOrigins("https://fromis7.store:3000");
-
     }
 
 }
