@@ -19,12 +19,14 @@ public class ListupService {
      private final CategoryRepository categoryRepository;
      private final ListupRepository listupRepository;
 
-     public void createListupByCateId(Long cateId, ListupRequest.ListupCreateRequest req){
-         Category category = categoryRepository.findById(cateId)
-                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
-         Listup listup = Listup.from(req.getName(), req.getUrl(), req.getImage(), req.getDescription(), category);
-         listupRepository.save(listup);
-     }
+    public void createListupByCateId(Long cateId, List<ListupRequest.ListupCreateRequest> reqList) {
+        Category category = categoryRepository.findById(cateId)
+                .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
+        List<Listup> listups = reqList.stream()
+                .map(req -> Listup.from(null, req.getUrl(), null, req.getDescription(), category))
+                .collect(Collectors.toList());
+        listupRepository.saveAll(listups);
+    }
 
      public List<ListupResponse.ListupReadResponse> readListupByCategory(Long cateId){
          Category cate = categoryRepository.findById(cateId)
