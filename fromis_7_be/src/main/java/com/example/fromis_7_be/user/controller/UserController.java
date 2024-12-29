@@ -19,19 +19,24 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{userId}")
+    @Operation(summary = "user 하나의 정보 가져오기, userid 참조")
     public UserResponse.ReadUser getUser(@PathVariable Long userId){
         return userService.readUser(userId);
     }
+
     @PostMapping("")
+    @Operation(summary = "user 추가하기")
     public void createUser(@RequestBody UserRequest.UserCreateRequest req){
         userService.createUser(req);
     }
 
     @PatchMapping("/{userId}")
+    @Operation(summary = "user 정보 수정, userid 참조")
     public UserResponse.ReadUser update(@PathVariable Long userId, @RequestBody UserRequest.UserCreateRequest req){
         return userService.updateUser(userId, req);
     }
     @DeleteMapping("/{userId}")
+    @Operation(summary = "user 정보 삭제, userid 참조")
     public void deleteUser(@PathVariable Long userId){
         userService.deleteUser(userId);
     }
