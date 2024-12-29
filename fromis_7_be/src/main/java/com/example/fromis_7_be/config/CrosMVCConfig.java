@@ -12,6 +12,7 @@ public class CrosMVCConfig implements WebMvcConfigurer {
 
         corsRegistry.addMapping("/**")
                 .exposedHeaders("Set-Cookie")
+                .allowedMethods("*")
                 .allowedOrigins("http://localhost:3000");
     }
 
