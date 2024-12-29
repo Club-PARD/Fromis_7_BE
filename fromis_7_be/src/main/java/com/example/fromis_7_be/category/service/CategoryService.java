@@ -29,9 +29,8 @@ public class CategoryService {
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + pieceId + "가 존재하지 않습니다."));
         Category category = Category.from(req.getName(), req.getColor(), false, piece);
 
-        listupService.createListupByCateId(category.getId(), req.getListups());
-
         categoryRepository.save(category);
+        listupService.createListupByCateId(category.getId(), req.getListups());
     }
 
     public List<CategoryResponse.CategoryReadResponse> readCategoryByPiece(Long pieceId){
