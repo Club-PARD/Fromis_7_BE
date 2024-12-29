@@ -1,11 +1,11 @@
 package com.example.fromis_7_be.config;
 
-import com.example.googletest.googlelogin.jwt.CustomLogoutFilter;
-import com.example.googletest.googlelogin.jwt.JWTFilter;
-import com.example.googletest.googlelogin.jwt.JWTUtil;
-import com.example.googletest.googlelogin.oauth2.CustomSuccessHandler;
-import com.example.googletest.googlelogin.repo.RefreshRepo;
-import com.example.googletest.googlelogin.service.CustomOauth2UserService;
+import com.example.fromis_7_be.googlelogin.jwt.CustomLogoutFilter;
+import com.example.fromis_7_be.googlelogin.jwt.JWTFilter;
+import com.example.fromis_7_be.googlelogin.jwt.JWTUtil;
+import com.example.fromis_7_be.googlelogin.oauth2.CustomSuccessHandler;
+import com.example.fromis_7_be.googlelogin.repo.RefreshRepo;
+import com.example.fromis_7_be.googlelogin.service.CustomOauth2UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
