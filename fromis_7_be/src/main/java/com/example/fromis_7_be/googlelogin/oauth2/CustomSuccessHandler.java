@@ -55,7 +55,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         response.setStatus(HttpStatus.OK.value());
 
-        response.sendRedirect("http://fromis7.store:3000/");
+        response.sendRedirect("https://fromis7.store:3000/");
     }
 
     private void addRefreshEntity(String username, String refresh, Long expiredMs) {
@@ -74,7 +74,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
         Cookie cookie = new Cookie(key, value);
         cookie.setMaxAge(60*60*60);
-        //cookie.setSecure(true);//-> https면 이거 활성화하기
+        cookie.setSecure(true);//-> https면 이거 활성화하기
         cookie.setPath("/");
         cookie.setHttpOnly(true);
 
