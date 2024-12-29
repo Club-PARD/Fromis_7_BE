@@ -18,20 +18,33 @@ public class UserPieceService {
     private final UserRepository userRepository;
     private final PieceRepository pieceRepository;
 
-    // 유저와 피스를 연결하는 메소드
-    public UserPieceResponse.UserPieceReadResponse createUserPiece(UserPieceRequest.CreateUserPieceRequest request) {
-        User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        Piece piece = pieceRepository.findById(request.getPieceId())
-                .orElseThrow(() -> new IllegalArgumentException("Piece not found"));
+
+    public UserPieceResponse.UserPieceReadResponse createUserPiece(Long userId, Long pieceId, UserPieceRequest.CreateUserPieceRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+        Piece piece = pieceRepository.findById(pieceId)
+                .orElseThrow(() -> new IllegalArgumentException("Piece not found: " + pieceId));
 
         UserPiece userPiece = new UserPiece();
         userPiece.setUser(user);
         userPiece.setPiece(piece);
-
-        // UserPiece 저장
         userPieceRepository.save(userPiece);
 
         return UserPieceResponse.UserPieceReadResponse.from(user.getId(), piece.getId());
+    }
+
+    public UserPieceResponse.UserPieceReadResponse getUserPiece(Long userPieceId) {
+        UserPiece userPiece = userPieceRepository.findById(userPieceId)
+                .orElseThrow(() -> new IllegalArgumentException("UserPiece not found: " + userPieceId));
+
+        return UserPieceResponse.UserPieceReadResponse.from(
+                userPiece.getUser().getId(),
+                userPiece.getPiece().getId()
+        );
+    }
+    public void deleteUserPiece(Long userPieceId) {
+        UserPiece userPiece = userPieceRepository.findById(userPieceId)
+                .orElseThrow(() -> new IllegalArgumentException("UserPiece not found: " + userPieceId));
+        userPieceRepository.delete(userPiece);
     }
 }
