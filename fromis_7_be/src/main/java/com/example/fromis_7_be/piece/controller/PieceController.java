@@ -32,6 +32,7 @@ public class PieceController {
     public PieceResponse.PieceReadResponse updatePiece(@PathVariable Long pieceId, @RequestBody PieceRequest.PieceCreateRequest req){
         return pieceService.update(pieceId, req);
     }
+
     @DeleteMapping("/{pieceId}")
     @Operation(summary = "piece 하나의 정보 삭제하기, pieceid 참조")
     public void deletePiece(@PathVariable Long pieceId){

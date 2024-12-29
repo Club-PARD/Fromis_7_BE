@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -41,10 +41,10 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
-    @PostMapping(value = "/{id}/uploadImage", consumes = "multipart/form-data")
+    @PostMapping(value = "/{userId}/uploadImage", consumes = "multipart/form-data")
     @Operation(summary = "프로필 이미지 변경 api")
-    public ResponseEntity<UserResponse.ImageRet> uploadImage(@PathVariable Long id, @RequestPart MultipartFile image) throws IOException {
-        UserResponse.ImageRet ret = userService.updateImage(id, image);
+    public ResponseEntity<UserResponse.ImageRet> uploadImage(@PathVariable Long userId, @RequestPart MultipartFile image) throws IOException {
+        UserResponse.ImageRet ret = userService.updateImage(userId, image);
         return new ResponseEntity<>(ret, HttpStatus.OK);
     }
 

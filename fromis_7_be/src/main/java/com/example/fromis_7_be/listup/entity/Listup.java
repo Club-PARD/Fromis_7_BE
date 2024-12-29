@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.listup.entity;
 
 import com.example.fromis_7_be.category.entity.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class Listup {
     //commentcount;
 
     @ManyToOne
+    @JsonIgnore // 순환 참조 방지
     @JoinColumn(name = "cate_id")
     private Category category;
 
