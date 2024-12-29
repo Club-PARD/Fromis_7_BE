@@ -4,6 +4,8 @@ import com.example.fromis_7_be.category.dto.CategoryRequest;
 import com.example.fromis_7_be.category.dto.CategoryResponse;
 import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.category.repository.CategoryRepository;
+import com.example.fromis_7_be.listup.entity.Listup;
+import com.example.fromis_7_be.listup.service.ListupService;
 import com.example.fromis_7_be.piece.entity.Piece;
 import com.example.fromis_7_be.piece.repository.PieceRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +22,18 @@ import java.util.stream.Collectors;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final PieceRepository pieceRepository;
+    private final ListupService listupService;
 
     public void createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
         Piece piece = pieceRepository.findById(pieceId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + pieceId + "가 존재하지 않습니다."));
         Category category = Category.from(req.getName(), req.getColor(), false, piece);
+
+        listupService.createListupByCateId(category.getId(), req.getListups());
+
         categoryRepository.save(category);
     }
+
     public List<CategoryResponse.CategoryReadResponse> readCategoryByPiece(Long pieceId){
         Piece piece = pieceRepository.findById(pieceId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + pieceId + "가 존재하지 않습니다."));

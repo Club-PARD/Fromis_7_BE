@@ -18,8 +18,6 @@ public class ListupRequest {
         private String name;
         private String image;
         private String description;
-        private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
     }
 
     @Getter
