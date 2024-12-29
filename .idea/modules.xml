@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Fromis_7_BE.iml" filepath="$PROJECT_DIR$/.idea/Fromis_7_BE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fromis_7_be.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fromis_7_be.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fromis_7_be.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fromis_7_be.main.iml" />
     </modules>
   </component>
