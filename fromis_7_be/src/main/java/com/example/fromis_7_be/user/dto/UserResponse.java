@@ -15,12 +15,13 @@ public class UserResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class ReadUser{
+        private Long userId;
         private String name;
         private String image;
         private List<UserPieceResponse.UserPieceReadResponse> userPieces;
 
         public static ReadUser from(User user,  List<UserPieceResponse.UserPieceReadResponse> userPieces){
-            return new ReadUser(user.getName(), user.getProfileImg(), userPieces);
+            return new ReadUser(user.getId(), user.getName(), user.getProfileImg(), userPieces);
         }
     }
 
