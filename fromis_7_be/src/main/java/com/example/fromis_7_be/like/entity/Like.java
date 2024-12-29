@@ -17,8 +17,6 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean like_status;
-
     private LocalDateTime createdAt;
 
     @PrePersist

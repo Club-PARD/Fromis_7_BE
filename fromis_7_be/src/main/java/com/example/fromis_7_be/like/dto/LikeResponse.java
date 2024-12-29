@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 public class LikeResponse {
+
     @Getter
     @Builder
     @NoArgsConstructor @AllArgsConstructor
