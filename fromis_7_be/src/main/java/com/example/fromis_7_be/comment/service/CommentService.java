@@ -32,5 +32,10 @@ public class CommentService {
         commentRepository.save(comment);
     }
 
+    public void deleteComment(Long commentId){
+        Comment comment = commentRepository.findById(commentId).orElseThrow(IllegalAccessError::new);
+        commentRepository.delete(comment);
+    }
+
 
 }
