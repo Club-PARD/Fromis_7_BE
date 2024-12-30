@@ -2,14 +2,11 @@ package com.example.fromis_7_be.like.service;
 
 import com.example.fromis_7_be.like.entity.Like;
 import com.example.fromis_7_be.like.repository.LikeRepository;
-import com.example.fromis_7_be.listup.service.ListupService;
 import com.example.fromis_7_be.user.entity.User;
 import com.example.fromis_7_be.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import com.example.fromis_7_be.like.repository.LikeRepository;
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.listup.repository.ListupRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,7 +18,7 @@ public class LikeService {
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
 
-    public void createLike(Long userId, Long listupId) {
+    public boolean createLike(Long userId, Long listupId) {
         Optional<Listup> l = listupRepository.findById(listupId);
         Listup listup = l.get();
         Optional<User> u = userRepository.findById(userId);
@@ -31,10 +28,12 @@ public class LikeService {
 
         if (existingLike != null) {  // 이미 좋아요가 존재하면 취소
             likeRepository.delete(existingLike);
+            return false;
         }
         else {
             Like like = Like.form(user, listup);
             likeRepository.save(like);
+            return true;
         }
     }
 }

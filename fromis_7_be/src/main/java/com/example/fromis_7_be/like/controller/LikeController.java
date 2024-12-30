@@ -13,8 +13,8 @@ public class LikeController {
     private final LikeService likeService;
 
     @PostMapping("/{listupId}/{userId}")
-    public ResponseEntity<String> createLike (@PathVariable Long userId, @PathVariable Long listupId){
-        likeService.createLike(userId, listupId);
-        return ResponseEntity.status(HttpStatus.CREATED).body("저장되었습니다.");
+    public ResponseEntity<Boolean> createLike (@PathVariable Long userId, @PathVariable Long listupId){
+        boolean ret = likeService.createLike(userId, listupId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 }
