@@ -28,7 +28,7 @@ public class SecurityConfig {
         http.oauth2Login(
                 oauth -> oauth
                         .loginPage("/loginForm") //google login
-                        .defaultSuccessUrl("/home") // if login is successfull
+                        .defaultSuccessUrl("/my") // if login is successfull
                         .userInfoEndpoint ( // user 정보를 불어온다
 
                                 userInfo ->
