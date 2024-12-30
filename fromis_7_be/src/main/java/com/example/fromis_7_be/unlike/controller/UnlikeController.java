@@ -16,8 +16,8 @@ public class UnlikeController {
     private final UnlikeService unlikeService;
 
     @PostMapping("/{listupId}/{userId}")
-    public ResponseEntity<String> createUnlike (@PathVariable Long userId, @PathVariable Long listupId){
-        unlikeService.createUnlike(userId, listupId);
-        return ResponseEntity.status(HttpStatus.CREATED).body("저장되었습니다.");
+    public ResponseEntity<Boolean> createUnlike (@PathVariable Long userId, @PathVariable Long listupId){
+        boolean ret = unlikeService.createUnlike(userId, listupId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 }

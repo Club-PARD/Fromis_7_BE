@@ -20,7 +20,7 @@ public class UnlikeService {
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
 
-    public void createUnlike(Long userId, Long listupId) {
+    public boolean createUnlike(Long userId, Long listupId) {
         Optional<Listup> l = listupRepository.findById(listupId);
         Listup listup = l.get();
         Optional<User> u = userRepository.findById(userId);
@@ -30,10 +30,12 @@ public class UnlikeService {
 
         if (existingUnlike != null) {  // 이미 좋아요가 존재하면 취소
             unlikeRepository.delete(existingUnlike);
+            return false;
         }
         else {
             Unlike unlike = Unlike.form(user, listup);
             unlikeRepository.save(unlike);
+            return true;
         }
     }
 }
