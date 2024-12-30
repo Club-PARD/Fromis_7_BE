@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.listup.entity;
 
+import com.example.fromis_7_be.align.entity.Align;
 import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.comment.entity.Comment;
 import com.example.fromis_7_be.like.entity.Like;
@@ -55,11 +56,15 @@ public class Listup {
     private List<Unlike> unlikes;
 
     @OneToMany(mappedBy = "listup")
+    private List<Align> aligns;
+
+    @OneToMany(mappedBy = "listup")
     private List<Comment> comments;
 
     public static Listup from(String name, String url, String image, String description, Category category ) {
-        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null, null);
+        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null, null,null);
     }
+
     public void update(String name, String url, String image, String description) {
         this.name = name;
         this.url = url;
