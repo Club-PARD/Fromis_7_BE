@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsMVCConfig implements WebMvcConfigurer {
 
-    @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
 
         corsRegistry.addMapping("/**")
@@ -16,15 +15,3 @@ public class CorsMVCConfig implements WebMvcConfigurer {
     }
 
 }
-
-/*
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-
-    // JWT
-    implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
-    implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
-    implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'
-
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
-*/
