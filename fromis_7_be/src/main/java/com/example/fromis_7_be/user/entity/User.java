@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.user.entity;
 
+import com.example.fromis_7_be.like.entity.Like;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,8 +42,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserPiece> userPieces;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Like> likes = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> likes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> unlikes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> aligns;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Like> comment;
+
 
 
     public void update(String name, String profileImg, LocalDateTime modifiedAt){

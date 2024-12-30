@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,7 @@ public class Listup {
     //likecount
     //commentcount;
 
+
     @ManyToOne
     @JsonIgnore // 순환 참조 방지
     @JoinColumn(name = "cate_id")
@@ -49,20 +51,20 @@ public class Listup {
         this.modifiedAt = LocalDateTime.now();
     }
 
-    @OneToMany(mappedBy = "listup")
+    @OneToMany(mappedBy = "listup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Like> likes;
 
-    @OneToMany(mappedBy = "listup")
+    @OneToMany(mappedBy = "listup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Unlike> unlikes;
 
-    @OneToMany(mappedBy = "listup")
+    @OneToMany(mappedBy = "listup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Align> aligns;
 
-    @OneToMany(mappedBy = "listup")
+    @OneToMany(mappedBy = "listup", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Comment> comments;
 
     public static Listup from(String name, String url, String image, String description, Category category ) {
-        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null, null,null);
+        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),new ArrayList<>());
     }
 
     public void update(String name, String url, String image, String description) {
