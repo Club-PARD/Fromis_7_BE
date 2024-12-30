@@ -15,8 +15,8 @@ public class CommentRequest {
     @Builder
     @Schema(description = "댓글 생성 요청 DTO")
     public static class CommentCreateRequest {
-        @Schema(description = "listupId")
-        @NotNull(message = "listupId는 필수 값입니다.")
+        @Schema(description = "listId")
+        @NotNull(message = "listId는 필수 값입니다.")
         private Long listupId;
 
         @Schema(description = "userId")

@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlignController {
     private final AlignService alignService;
 
-    @PostMapping("/{listupId}/{userId}")
-    public ResponseEntity<Boolean> createAlign (@PathVariable Long userId, @PathVariable Long listupId){
-        boolean ret = alignService.createAlign(userId, listupId);
+    @PostMapping("/{listId}/{userId}")
+    public ResponseEntity<Boolean> createAlign (@PathVariable Long userId, @PathVariable Long listId){
+        boolean ret = alignService.createAlign(userId, listId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 }

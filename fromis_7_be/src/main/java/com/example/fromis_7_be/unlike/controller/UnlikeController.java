@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UnlikeController {
     private final UnlikeService unlikeService;
 
-    @PostMapping("/{listupId}/{userId}")
-    public ResponseEntity<Boolean> createUnlike (@PathVariable Long userId, @PathVariable Long listupId){
-        boolean ret = unlikeService.createUnlike(userId, listupId);
+    @PostMapping("/{listId}/{userId}")
+    public ResponseEntity<Boolean> createUnlike (@PathVariable Long userId, @PathVariable Long listId){
+        boolean ret = unlikeService.createUnlike(userId, listId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 }

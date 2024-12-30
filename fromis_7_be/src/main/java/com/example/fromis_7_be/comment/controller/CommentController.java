@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     private final CommentService commentService;
 
-    @PostMapping("/{listtId}")
+    @PostMapping("/{listId}/{userId}")
     public void createComment(@PathVariable Long listId,
                               @PathVariable Long userId,
                               @RequestBody CommentRequest.CommentCreateRequest req){

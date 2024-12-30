@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class LikeController {
     private final LikeService likeService;
 
-    @PostMapping("/{listupId}/{userId}")
-    public ResponseEntity<Boolean> createLike (@PathVariable Long userId, @PathVariable Long listupId){
-        boolean ret = likeService.createLike(userId, listupId);
+    @PostMapping("/{listId}/{userId}")
+    public ResponseEntity<Boolean> createLike (@PathVariable Long userId, @PathVariable Long listId){
+        boolean ret = likeService.createLike(userId, listId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 }
