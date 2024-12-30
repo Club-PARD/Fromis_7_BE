@@ -15,12 +15,6 @@ public class LikeResponse {
     public static class LikeRead{
         private Long likeId;
 
-        public static LikeRead from(Like like) {
-            return new LikeRead(
-                    like.getId()
-            );
-        }
-
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.fromis_7_be.like.entity;
+package com.example.fromis_7_be.unlike.entity;
 
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.user.entity.User;
@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "list_like")
-public class Like {
+@Table(name = "list_unlike")
+public class Unlike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,8 +36,8 @@ public class Like {
         this.createdAt = LocalDateTime.now();
     }
 
-    public static Like form(User user, Listup listup){
-        return new Like(null, null, user, listup);
+    public static Unlike form(User user, Listup listup){
+        return new Unlike(null, null, user, listup);
     }
 
 }

@@ -75,7 +75,9 @@ public class ListupService {
                              listup.getUrl(),
                              listup.getName(),
                              listup.getImage(),
-                             listup.getDescription()
+                             listup.getDescription(),
+                             listup.getLikes() == null ? 0 : listup.getLikes().size(),// 좋아요 수 계산
+                             listup.getUnlikes() == null ? 0 : listup.getUnlikes().size()// 좋아요 수 계산
                      );
                  })
                  .collect(Collectors.toList());
