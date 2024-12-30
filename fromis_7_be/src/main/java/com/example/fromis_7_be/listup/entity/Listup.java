@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.listup.entity;
 
 import com.example.fromis_7_be.category.entity.Category;
+import com.example.fromis_7_be.like.entity.Like;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,8 +46,11 @@ public class Listup {
         this.modifiedAt = LocalDateTime.now();
     }
 
-    public static Listup from(String name, String url, String image, String description, Category category) {
-        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category);
+    @OneToMany(mappedBy = "listup")
+    private List<Like> likes;
+
+    public static Listup from(String name, String url, String image, String description, Category category ) {
+        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null);
     }
     public void update(String name, String url, String image, String description) {
         this.name = name;
