@@ -39,14 +39,14 @@ public class ListupService {
                     } catch (IOException e) {
                         metadata = new HashMap<>();
                         metadata.put("title", null);
-                        metadata.put("image", null);
+                        metadata.put("thumbnailUrl", null);
                         metadata.put("description", null);
                     }
 
                     return Listup.from(
                             (String) metadata.get("title"),
                             url,
-                            (String) metadata.get("image"),
+                            (String) metadata.get("thumbnailUrl"),
                             description,
                             category
                     );
