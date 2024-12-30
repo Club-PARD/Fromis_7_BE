@@ -58,10 +58,10 @@ public class User {
         this.modifiedAt = LocalDateTime.now();
     }
 
-    public void update(String name, String profileImg, LocalDateTime modifiedAt){
+    public void update(String name){
+        LocalDateTime now = LocalDateTime.now();
         this.name = name;
-        this.profileImg = profileImg;
-        this.modifiedAt = modifiedAt;
+        this.modifiedAt = now;
     }
 
     public void setImage(String imageUrl) {

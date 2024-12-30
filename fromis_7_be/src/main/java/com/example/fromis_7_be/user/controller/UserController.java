@@ -30,9 +30,9 @@ public class UserController {
         userService.createUser(req);
     }
 
-    @PatchMapping("/{userId}")
-    @Operation(summary = "user 정보 수정, userid 참조")
-    public UserResponse.ReadUser update(@PathVariable Long userId, @RequestBody UserRequest.UserCreateRequest req){
+    @PatchMapping("/{userId}/username")
+    @Operation(summary = "user 이름 정보 수정, userid 참조")
+    public UserResponse.ReadUser update(@PathVariable Long userId, @RequestBody UserRequest.UserUpdateRequest req){
         return userService.updateUser(userId, req);
     }
     @DeleteMapping("/{userId}")
@@ -41,8 +41,8 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
-    @PostMapping(value = "/{userId}/uploadImage", consumes = "multipart/form-data")
-    @Operation(summary = "프로필 이미지 변경 api")
+    @PatchMapping(value = "/{userId}/uploadImage", consumes = "multipart/form-data")
+    @Operation(summary = "user 프로필 이미지 변경 api")
     public ResponseEntity<UserResponse.ImageRet> uploadImage(@PathVariable Long userId, @RequestPart MultipartFile image) throws IOException {
         UserResponse.ImageRet ret = userService.updateImage(userId, image);
         return new ResponseEntity<>(ret, HttpStatus.OK);
