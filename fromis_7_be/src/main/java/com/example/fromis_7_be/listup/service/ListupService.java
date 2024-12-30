@@ -78,9 +78,7 @@ public class ListupService {
                              listup.getDescription(),
                              listup.getLikes() == null ? 0 : listup.getLikes().size(),// 좋아요 수 계산
                              listup.getUnlikes() == null ? 0 : listup.getUnlikes().size(),// 싫어요 수 계산
-                             listup.getAligns() == null ? 0 : listup.getAligns().size(),// 얼라인 수 계산
-                             listup.getComments()
-                     );
+                             listup.getAligns() == null ? 0 : listup.getAligns().size());
                  })
                  .collect(Collectors.toList());
      }

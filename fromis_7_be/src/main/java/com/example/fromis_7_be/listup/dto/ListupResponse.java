@@ -24,7 +24,6 @@ public class ListupResponse {
         private int likeCount;
         private int unlikeCount;
         private int alginCount;
-        private List<Comment> comments;
 
         public static ListupReadResponse from(Listup listup) {
             return ListupReadResponse.builder()
@@ -35,8 +34,7 @@ public class ListupResponse {
                     .description(listup.getDescription())
                     .likeCount(listup.getLikes() == null ? 0 : listup.getLikes().size()) // 좋아요 수 계산
                     .unlikeCount(listup.getUnlikes() == null ? 0 : listup.getUnlikes().size()) // 싫어요 수 계산
-                    .alginCount(listup.getAligns() == null ? 0 : listup.getAligns().size()) // 얼라인 수 계산
-                    .comments(listup.getComments())
+                    .alginCount(listup.getAligns() == null ? 0 : listup.getAligns().size()) // 얼라인 수 계
                     .build();
         }
 
