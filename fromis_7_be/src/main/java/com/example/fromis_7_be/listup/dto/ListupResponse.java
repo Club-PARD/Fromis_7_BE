@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.listup.dto;
 
+import com.example.fromis_7_be.comment.dto.CommentResponse;
 import com.example.fromis_7_be.comment.entity.Comment;
 import com.example.fromis_7_be.listup.entity.Listup;
 import lombok.AllArgsConstructor;
@@ -8,7 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListupResponse {
     @Getter
@@ -24,6 +27,7 @@ public class ListupResponse {
         private int likeCount;
         private int unlikeCount;
         private int alginCount;
+        private ArrayList<CommentResponse.CommentReadResponse> comments;
 
         public static ListupReadResponse from(Listup listup) {
             return ListupReadResponse.builder()
@@ -35,6 +39,11 @@ public class ListupResponse {
                     .likeCount(listup.getLikes() == null ? 0 : listup.getLikes().size()) // 좋아요 수 계산
                     .unlikeCount(listup.getUnlikes() == null ? 0 : listup.getUnlikes().size()) // 싫어요 수 계산
                     .alginCount(listup.getAligns() == null ? 0 : listup.getAligns().size()) // 얼라인 수 계산
+                    .comments(listup.getComments() == null ? new ArrayList<>() :
+                            listup.getComments().stream()
+                                    .map(CommentResponse.CommentReadResponse::from)
+                                    .collect(Collectors.toCollection(ArrayList::new))
+                    )
                     .build();
         }
 
