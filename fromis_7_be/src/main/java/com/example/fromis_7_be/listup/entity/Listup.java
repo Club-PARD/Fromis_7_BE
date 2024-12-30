@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.listup.entity;
 
 import com.example.fromis_7_be.category.entity.Category;
+import com.example.fromis_7_be.comment.entity.Comment;
 import com.example.fromis_7_be.like.entity.Like;
 import com.example.fromis_7_be.unlike.entity.Unlike;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,8 +54,11 @@ public class Listup {
     @OneToMany(mappedBy = "listup")
     private List<Unlike> unlikes;
 
+    @OneToMany(mappedBy = "listup")
+    private List<Comment> comments;
+
     public static Listup from(String name, String url, String image, String description, Category category ) {
-        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null);
+        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null, null);
     }
     public void update(String name, String url, String image, String description) {
         this.name = name;
