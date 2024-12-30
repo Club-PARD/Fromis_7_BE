@@ -25,7 +25,7 @@ public class CategoryService {
     private final PieceRepository pieceRepository;
     private final ListupService listupService;
 
-    public CategoryResponse.CategoryReadResponse createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
+    public void createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
         Piece piece = pieceRepository.findById(pieceId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + pieceId + "가 존재하지 않습니다."));
         Category category = Category.from(req.getName(), req.getColor(), false, piece);
@@ -33,7 +33,6 @@ public class CategoryService {
         listupService.deleteListupByCateId(category.getId());
         listupService.createListupByCateId(category.getId(), req.getListups());
 
-        return
     }
 
     public List<CategoryResponse.CategoryReadResponse> readCategoryByPiece(Long pieceId){
