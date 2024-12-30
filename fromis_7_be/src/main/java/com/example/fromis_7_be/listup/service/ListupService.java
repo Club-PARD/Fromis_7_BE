@@ -2,6 +2,7 @@ package com.example.fromis_7_be.listup.service;
 
 import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.category.repository.CategoryRepository;
+import com.example.fromis_7_be.comment.dto.CommentResponse;
 import com.example.fromis_7_be.listup.dto.ListupRequest;
 import com.example.fromis_7_be.listup.dto.ListupResponse;
 import com.example.fromis_7_be.listup.entity.Listup;
@@ -11,10 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -65,23 +63,17 @@ public class ListupService {
 
         listupRepository.deleteAll(listups);
     }
-     public List<ListupResponse.ListupReadResponse> readListupByCategory(Long cateId){
-         Category cate = categoryRepository.findById(cateId)
-                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
-         return listupRepository.findAllByCategory(cate).stream()
-                 .map(listup -> {
-                     return new ListupResponse.ListupReadResponse(
-                             listup.getListId(),
-                             listup.getUrl(),
-                             listup.getName(),
-                             listup.getImage(),
-                             listup.getDescription(),
-                             listup.getLikes() == null ? 0 : listup.getLikes().size(),// 좋아요 수 계산
-                             listup.getUnlikes() == null ? 0 : listup.getUnlikes().size(),// 싫어요 수 계산
-                             listup.getAligns() == null ? 0 : listup.getAligns().size());
-                 })
-                 .collect(Collectors.toList());
-     }
+
+    public List<ListupResponse.ListupReadResponse> readListupByCategory(Long cateId) {
+        // 1. 카테고리 조회
+        Category cate = categoryRepository.findById(cateId)
+                .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
+
+        // 2. Listup 데이터를 가져와서 변환
+        return listupRepository.findAllByCategory(cate).stream()
+                .map(ListupResponse.ListupReadResponse::from) // 변환 로직을 response에서 호출
+                .collect(Collectors.toList());
+    }
 
     public ListupResponse.ListupReadResponse readListupById(Long listId) {
         return listupRepository.findById(listId)
