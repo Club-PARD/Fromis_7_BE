@@ -1,5 +1,7 @@
 package com.example.fromis_7_be.like.entity;
 
+import com.example.fromis_7_be.listup.entity.Listup;
+import com.example.fromis_7_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +20,14 @@ public class Like {
     private Long id;
 
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "listup_id")
+    private Listup listup;
 
     @PrePersist
     public void onCreate() {
