@@ -2,6 +2,7 @@ package com.example.fromis_7_be.listup.entity;
 
 import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.like.entity.Like;
+import com.example.fromis_7_be.unlike.entity.Unlike;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -49,8 +50,11 @@ public class Listup {
     @OneToMany(mappedBy = "listup")
     private List<Like> likes;
 
+    @OneToMany(mappedBy = "listup")
+    private List<Unlike> unlikes;
+
     public static Listup from(String name, String url, String image, String description, Category category ) {
-        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null);
+        return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, null, null);
     }
     public void update(String name, String url, String image, String description) {
         this.name = name;

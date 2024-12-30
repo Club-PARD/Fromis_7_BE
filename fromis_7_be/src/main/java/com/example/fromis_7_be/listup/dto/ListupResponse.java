@@ -20,7 +20,8 @@ public class ListupResponse {
         private String image;
         private String description;
         private int likeCount;
-        //        private boolean likedByCurrentUser;
+        private int unlikeCount;
+
         public static ListupReadResponse from(Listup listup) {
             return ListupReadResponse.builder()
                     .listupId(listup.getListId())
@@ -29,6 +30,7 @@ public class ListupResponse {
                     .image(listup.getImage())
                     .description(listup.getDescription())
                     .likeCount(listup.getLikes() == null ? 0 : listup.getLikes().size()) // 좋아요 수 계산
+                    .unlikeCount(listup.getUnlikes() == null ? 0 : listup.getUnlikes().size()) // 좋아요 수 계산
                     .build();
         }
 
