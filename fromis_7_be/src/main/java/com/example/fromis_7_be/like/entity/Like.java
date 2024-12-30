@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "list_like")
 public class Like {
 
     @Id
@@ -26,12 +27,17 @@ public class Like {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "listup_id")
+    @JoinColumn(name = "list_id")
     private Listup listup;
+
 
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
+    }
+
+    public static Like form(User user, Listup listup){
+        return new Like(null, null, user, listup);
     }
 
 }
