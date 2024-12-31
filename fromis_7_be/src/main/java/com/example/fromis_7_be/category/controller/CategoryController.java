@@ -21,7 +21,7 @@ public class CategoryController {
     @PostMapping("{pieceId}")
     @Operation(summary = "category 생성, pieceId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> createCategoryByPiece(@PathVariable Long pieceId,
-                                      @RequestBody CategoryRequest.CategoryCreateRequest req){
+                                                                                       @RequestBody CategoryRequest.CategoryCreateRequest req){
         CategoryResponse.CategoryReadResponse createCategory = categoryService.createCategoryByPieceId(pieceId, req);
         return ResponseEntity.ok(createCategory);
     }

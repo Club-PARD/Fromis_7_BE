@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.category.service;
 
+import com.example.fromis_7_be.alarm.service.AlarmService;
 import com.example.fromis_7_be.category.dto.CategoryRequest;
 import com.example.fromis_7_be.category.dto.CategoryResponse;
 import com.example.fromis_7_be.category.entity.Category;
@@ -10,6 +11,9 @@ import com.example.fromis_7_be.listup.repository.ListupRepository;
 import com.example.fromis_7_be.listup.service.ListupService;
 import com.example.fromis_7_be.piece.entity.Piece;
 import com.example.fromis_7_be.piece.repository.PieceRepository;
+import com.example.fromis_7_be.user.entity.User;
+import com.example.fromis_7_be.userpiece.entity.UserPiece;
+import com.example.fromis_7_be.userpiece.repository.UserPieceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +29,8 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final PieceRepository pieceRepository;
     private final ListupService listupService;
-
+    private final AlarmService alarmService;
+    private final UserPieceRepository userPieceRepository;
     public CategoryResponse.CategoryReadResponse createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
 
         Piece piece = pieceRepository.findById(pieceId)
@@ -35,6 +40,16 @@ public class CategoryService {
         listupService.deleteListupByCateId(category.getId());
         listupService.createListupByCateId(category.getId(), req.getListups());
 
+        List<UserPiece> userPieces = userPieceRepository.findByPieceId(pieceId);
+        if (userPieces.isEmpty()) {
+            throw new IllegalArgumentException("해당 piece에 연결된 사용자가 없습니다.");
+        }
+
+        // 모든 사용자에게 알림 전송
+        for (UserPiece userPiece : userPieces) {
+            User user = userPiece.getUser();
+            alarmService.notifyCategoryCreated(user, category);
+        }
         return CategoryResponse.CategoryReadResponse.builder()
                 .cateId(category.getId())
                 .name(category.getName())

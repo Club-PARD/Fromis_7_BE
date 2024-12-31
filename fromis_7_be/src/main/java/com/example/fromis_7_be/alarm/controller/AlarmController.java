@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,6 +29,18 @@ public class AlarmController {
         }
         // 사용자 ID로 AlarmService의 subscribe 메서드 호출
         return alarmService.subscribe(userId);
+    }
+
+    /**
+     * 사용자 알림 메시지 리스트 반환
+     */
+    @GetMapping("/notifications")
+    public List<String> getNotifications(@RequestHeader(value = "Authorization") String authorizationHeader) {
+        Long userId = extractUserIdFromHeader(authorizationHeader);
+        if (userId == null) {
+            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
+        }
+        return alarmService.getNotifications(userId);
     }
 
     @DeleteMapping("/delete/{id}")
