@@ -12,6 +12,8 @@ import com.example.fromis_7_be.metadata.controller.MetaDataContoller;
 import com.example.fromis_7_be.metadata.service.MetadataService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,15 +29,27 @@ public class ListupController {
     private final ListupRepository listupRepository;
     @PostMapping("/{categoryId}")
     @Operation(summary = "list 생성, categoryid 참조")
-    public void createListupByCate(@PathVariable Long cateId, @RequestBody List<ListupRequest.ListupCreateRequest>  req){
+    public ResponseEntity<List<ListupResponse.ListupReadResponse>> createListupByCate(
+            @PathVariable Long cateId,
+            @RequestBody List<ListupRequest.ListupCreateRequest> req) {
+
+        // 1. 카테고리 조회
         Category category = categoryRepository.findById(cateId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
 
+        // 2. 요청 데이터를 Listup 엔티티로 변환 및 저장
         List<Listup> listups = req.stream()
                 .map(request -> Listup.from(null, request.getUrl(), null, request.getDescription(), category))
                 .collect(Collectors.toList());
-
         listupRepository.saveAll(listups);
+
+        // 3. 저장된 데이터 응답 DTO로 변환
+        List<ListupResponse.ListupReadResponse> response = listups.stream()
+                .map(ListupResponse.ListupReadResponse::from)
+                .collect(Collectors.toList());
+
+        // 4. 응답 반환
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{listId}")
