@@ -1,10 +1,10 @@
 package com.example.fromis_7_be.listup.entity;
 
-import com.example.fromis_7_be.align.entity.Align;
+import com.example.fromis_7_be.state.align.entity.Align;
 import com.example.fromis_7_be.category.entity.Category;
 import com.example.fromis_7_be.comment.entity.Comment;
-import com.example.fromis_7_be.like.entity.Like;
-import com.example.fromis_7_be.unlike.entity.Unlike;
+import com.example.fromis_7_be.state.like.entity.Like;
+import com.example.fromis_7_be.state.unlike.entity.Unlike;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
