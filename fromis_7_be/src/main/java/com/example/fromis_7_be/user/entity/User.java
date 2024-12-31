@@ -1,6 +1,9 @@
 package com.example.fromis_7_be.user.entity;
 
+import com.example.fromis_7_be.comment.entity.Comment;
+import com.example.fromis_7_be.state.align.entity.Align;
 import com.example.fromis_7_be.state.like.entity.Like;
+import com.example.fromis_7_be.state.unlike.entity.Unlike;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,13 +42,14 @@ public class User {
     private List<Like> likes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> unlikes;
+    private List<Unlike> unlikes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> aligns;
+    private List<Align> aligns;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> comment;
+    private List<Comment> comment;
+
 
     @PrePersist
     public void onCreate() {
