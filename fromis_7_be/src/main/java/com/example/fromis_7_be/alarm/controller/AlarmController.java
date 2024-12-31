@@ -4,7 +4,6 @@ import com.example.fromis_7_be.alarm.dto.MsgResponseDto;
 import com.example.fromis_7_be.alarm.service.AlarmService;
 import com.example.fromis_7_be.user.entity.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -21,7 +20,7 @@ public class AlarmController {
      * SSE 구독 엔드포인트
      */
     @GetMapping("/subscribe")
-    public SseEmitter subscribe(@AuthenticationPrincipal(expression = "user") User user) {
+    public SseEmitter subscribe(User user) {
         Long userId = user.getId(); // 인증된 사용자 ID 가져오기
         return alarmService.subscribe(userId);
     }
