@@ -21,7 +21,7 @@ public class CommentService {
     private final ListupRepository listupRepository;
     private final CommentRepository commentRepository;
 
-    public void createComment(Long listupId, Long userId, CommentRequest.CommentCreateRequest req){
+    public CommentResponse.CommentReadResponse createComment(Long listupId, Long userId, CommentRequest.CommentCreateRequest req){
         Listup listup = listupRepository.findById(listupId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 listup 정보: " + listupId + "가 존재하지 않습니다."));
         User user = userRepository.findById(userId)
@@ -30,6 +30,7 @@ public class CommentService {
         Comment comment = Comment.from(listup, user, req.getContent());
 
         commentRepository.save(comment);
+        return CommentResponse.CommentReadResponse.from(comment);
     }
 
     public void deleteComment(Long commentId){
