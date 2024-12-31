@@ -42,6 +42,7 @@ public class PieceResponse {
                     .startDay(piece.getStartDay())
                     .endYear(piece.getEndYear())
                     .endMonth(piece.getEndMonth())
+                    .endMonth(piece.getEndMonth())
                     .endDay(piece.getEndDay())
                     .createdAt(piece.getCreatedAt())
                     .build();

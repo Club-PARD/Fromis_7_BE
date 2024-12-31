@@ -5,6 +5,7 @@ import com.example.fromis_7_be.piece.dto.PieceResponse;
 import com.example.fromis_7_be.piece.service.PieceService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,10 @@ public class PieceController {
 
     @PostMapping("/{userId}")
     @Operation(summary = "piece 생성, userid 참조")
-    public void createPieceByUser(@PathVariable Long userId,
-                                  @RequestBody PieceRequest.PieceCreateRequest req){
-        pieceService.createPieceByUserId(userId, req);
+    public ResponseEntity<PieceResponse.PieceReadResponse> createPieceByUser(@PathVariable Long userId,
+                                            @RequestBody PieceRequest.PieceCreateRequest req){
+        PieceResponse.PieceReadResponse createPieceResponse =  pieceService.createPieceByUserId(userId, req);
+        return ResponseEntity.ok().body(createPieceResponse);
     }
     @GetMapping("/all/{userId}")
     @Operation(summary = "piece 모두 불러오기, userid 참조")

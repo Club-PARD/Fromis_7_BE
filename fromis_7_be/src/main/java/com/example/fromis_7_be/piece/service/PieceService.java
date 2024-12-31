@@ -32,7 +32,7 @@ public class PieceService {
     private final AlarmService alarmService;
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public void createPieceByUserId(Long userId, PieceRequest.PieceCreateRequest req){
+    public PieceResponse.PieceReadResponse createPieceByUserId(Long userId, PieceRequest.PieceCreateRequest req){
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 User 정보: " + userId + "가 존재하지 않습니다."));
         Piece piece = Piece.from(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
@@ -47,7 +47,7 @@ public class PieceService {
         userPieceRepository.save(userPiece);
         // 알림 생성 및 전송
         alarmService.notifyPieceCreated(user, piece);
-
+        return PieceResponse.PieceReadResponse.from(piece);
     }
 
     public List<PieceResponse.PieceReadResponse> readPieceByUser(Long userId){
