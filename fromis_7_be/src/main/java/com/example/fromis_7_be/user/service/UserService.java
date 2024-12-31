@@ -35,7 +35,7 @@ public class UserService {
     }
     public void createUser(UserRequest.UserCreateRequest req){
         LocalDateTime now = LocalDateTime.now();
-        User u = new User(null, req.getName(), req.getEmail(), req.getImage(), now, now, new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>());
+        User u = new User(null, req.getName(), req.getEmail(), req.getPassword(),null , now, now, new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>());
         userRepository.save(u);
     }
     public UserResponse.ReadUser updateUser(Long userId, UserRequest.UserUpdateRequest req){

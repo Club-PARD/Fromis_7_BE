@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
     private final CategoryService categoryService;
+
     @PostMapping("{pieceId}")
     @Operation(summary = "category 생성, pieceId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> createCategoryByPiece(@PathVariable Long pieceId,

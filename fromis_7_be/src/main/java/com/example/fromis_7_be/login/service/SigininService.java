@@ -13,9 +13,9 @@ import java.util.Optional;
 public class SigininService {
     private final UserRepository userRepository;
 
-    public Long loginuser(UserRequest.createSignRequest req) {
-        System.out.println(req.getUseremail());
-        Optional<User> user = userRepository.findByEmail(req.getUseremail());
+    public Long loginuser(UserRequest.UserCreateRequest req) {
+
+        Optional<User> user = userRepository.findByEmail(req.getEmail());
         System.out.println(user.isPresent());
         Long ret = 0L;
         //password 넣고 비교 해서 맞으면 user 객체 반환

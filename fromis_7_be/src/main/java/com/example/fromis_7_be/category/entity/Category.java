@@ -48,9 +48,11 @@ public class Category {
         this.isHighlighted = isHighlighted;
         this.modifiedAt = LocalDateTime.now();
     }
+
     public static Category from(String name, String color, Boolean isHighlighted, Piece piece){
         return new Category(null, name, color, isHighlighted, new ArrayList<>(), piece, LocalDateTime.now(),  LocalDateTime.now());
     }
+
     public void update(String name, String color, Boolean isHighlighted) {
         this.name = name; // 이름 수정
         this.color = color; // 색상 수정

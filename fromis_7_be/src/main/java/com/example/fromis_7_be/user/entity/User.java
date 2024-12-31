@@ -29,6 +29,8 @@ public class User {
 
     private String email;
 
+    private String password;
+
     private String profileImg;
     @Column(name = "created_at")
     private LocalDateTime createdAt;

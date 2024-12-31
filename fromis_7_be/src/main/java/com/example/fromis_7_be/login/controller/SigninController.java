@@ -2,6 +2,7 @@ package com.example.fromis_7_be.login.controller;
 
 import com.example.fromis_7_be.login.service.SigininService;
 import com.example.fromis_7_be.user.dto.UserRequest;
+import com.example.fromis_7_be.user.dto.UserResponse;
 import com.example.fromis_7_be.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -30,14 +31,8 @@ public class SigninController {
 
     @PostMapping("/login")
     @Operation(summary = "로그인할 떄 쓰세요")
-    public ResponseEntity<Long> login(@RequestBody UserRequest.createSignRequest req) {
-        Long ret = sigininService.loginuser(req);
+    public ResponseEntity<UserResponse.ReadUser> login(@RequestBody UserRequest.UserCreateRequest req) {
+        UserResponse.ReadUser ret = sigininService.loginuser(req);
 
-        if(ret != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(ret);
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ret);
-        }
     }
 }
