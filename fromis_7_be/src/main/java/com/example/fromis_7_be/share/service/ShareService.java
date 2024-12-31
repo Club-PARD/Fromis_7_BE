@@ -22,7 +22,7 @@ public class ShareService {
         Optional<Piece> p = pieceRepository.findById(pieceId);
         Piece piece = p.get();
 
-        Share share = new Share(null , shareURL , null , piece);
+        Share share = new Share(null , shareURL , null );
         shareRepository.save(share);
     }
 

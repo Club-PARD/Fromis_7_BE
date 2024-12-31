@@ -49,9 +49,6 @@ public class Piece {
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Share share;
-
 
     @PrePersist
     protected void onCreate() {

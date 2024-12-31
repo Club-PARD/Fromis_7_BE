@@ -18,7 +18,7 @@ public class ShareController {
     @Operation(summary = "shareid 만들기, pieceid 참조")
     public void createShareURL(@PathVariable Long pieceId) {
 
-        String url = "https://fromis.stroe/piece" + pieceId;
+        String url = "https://fromis.stroe/piece" + pieceId.toString();
         System.out.println(url);
 
         shareService.createShareURL(pieceId, url);
