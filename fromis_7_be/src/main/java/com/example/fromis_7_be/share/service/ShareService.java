@@ -22,8 +22,7 @@ public class ShareService {
         Optional<Piece> p = pieceRepository.findById(pieceId);
         Piece piece = p.get();
 
-        Share share = share.form()
-
+        Share share = new Share(null , shareURL , null , piece);
         shareRepository.save(share);
     }
 
