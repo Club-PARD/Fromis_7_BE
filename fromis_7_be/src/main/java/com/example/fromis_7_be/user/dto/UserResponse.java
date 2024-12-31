@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserResponse {
     @Getter
@@ -23,6 +24,10 @@ public class UserResponse {
 
         public static ReadUser from(User user,  List<UserPieceResponse.UserPieceReadResponse> userPieces){
             return new ReadUser(user.getId(), user.getName(), user.getEmail(), user.getProfileImg(), userPieces);
+        }
+
+        public static ReadUser from(User u) {
+            return new ReadUser(u.getId(), u.getName(), u.getProfileImg(), null);
         }
     }
 

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("signin")
 @RequiredArgsConstructor
@@ -30,9 +32,15 @@ public class SigninController {
 
 
     @PostMapping("/login")
-    @Operation(summary = "로그인할 떄 쓰세요")
-    public ResponseEntity<UserResponse.ReadUser> login(@RequestBody UserRequest.UserCreateRequest req) {
-        UserResponse.ReadUser ret = sigininService.loginuser(req);
+    @Operation(summary = "로그인할 때 쓰세요")
+    public ResponseEntity<?> login(@RequestBody UserRequest.LoginUserRequest req) {
+        Optional<UserResponse.ReadUser> result = sigininService.loginuser(req);
 
+        if (result.isEmpty()) {
+            return ResponseEntity.ok("로그인 실패 : 이메일 또는 비밀번호가 올바르지 않습니다.");
+        }
+
+        return ResponseEntity.ok(result.get());
     }
+
 }
