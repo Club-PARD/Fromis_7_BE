@@ -32,6 +32,7 @@ public class AlarmService {
     private final Map<Long, SseEmitter> sseEmitters = new ConcurrentHashMap<>();
     // 알림 카운트 관리 맵
     private final Map<Long, Integer> notificationCounts = new ConcurrentHashMap<>();
+    private final Map<Long, List<String>> userNotifications = new ConcurrentHashMap<>();
 
 
     /**
@@ -40,6 +41,7 @@ public class AlarmService {
     public SseEmitter subscribe(Long userId) {
         // 1. SseEmitter 생성
         SseEmitter sseEmitter = new SseEmitter(30 * 60 * 1000L); // 30분 타임아웃
+
 
         // 2. 초기 연결
         try {
@@ -72,16 +74,6 @@ public class AlarmService {
                 System.err.println("Failed to send notification to userId: " + userId + ", Error: " + e.getMessage());
             }
         }
-    }
-
-
-    /**
-     * 하이라이트된 카테고리 알림 전송
-     */
-    public void notifyHighlightedCategory(Long userId, Category category) {
-        String message =  category.getName() + "조각이 하이라이트 되었어요!";
-
-        sendNotification(userId, "highlightedCategory", message);
     }
 
 
@@ -129,6 +121,29 @@ public class AlarmService {
 
         // 알림 전송
         sendNotification(user.getId(), "newPiece", message);
+    }
+
+    public List<String> getNotifications(Long userId) {
+        return userNotifications.getOrDefault(userId, List.of());
+    }
+    /**
+     * 하이라이트된 카테고리 알림 전송
+     */
+    public void notifyCategoryCreated(User user, Category category) {
+        String name = category.getName() != null ? category.getName() : "새로운 조각";
+        String message = name + "조각이 하이라이트 되었어요!";
+
+        Alarm alarm = Alarm.builder()
+                .user(user)
+                .message(message)
+                .type(Alarm.AlarmType.NEW_PIECE)
+                .createdAt(LocalDateTime.now())
+                .isRead(false)
+                .build();
+        alarmRepository.save(alarm);
+
+        // 알림 전송
+        sendNotification(user.getId(), "highlightedCategory", message);
     }
 
     /**

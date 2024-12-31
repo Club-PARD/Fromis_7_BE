@@ -43,8 +43,10 @@ public class Piece {
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
+    @Getter
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserPiece> userPieces = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
