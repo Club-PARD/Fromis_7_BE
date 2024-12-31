@@ -23,7 +23,4 @@ public class Share {
 
     private LocalDateTime createdAt;
 
-    @OneToOne(mappedBy = )
-    private
-
 }
