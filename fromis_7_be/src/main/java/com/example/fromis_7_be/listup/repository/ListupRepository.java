@@ -1,7 +1,6 @@
 package com.example.fromis_7_be.listup.repository;
 
 import com.example.fromis_7_be.category.entity.Category;
-import com.example.fromis_7_be.like.entity.Like;
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
