@@ -50,7 +50,6 @@ public class Piece {
     private List<Category> categories = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "share_id") // 외래 키로 사용할 컬럼 지정
     private Share share;
 
 

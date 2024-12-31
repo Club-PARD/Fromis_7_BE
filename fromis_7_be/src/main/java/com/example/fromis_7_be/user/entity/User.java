@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.user.entity;
 
 import com.example.fromis_7_be.comment.entity.Comment;
+import com.example.fromis_7_be.share.entity.Share;
 import com.example.fromis_7_be.state.align.entity.Align;
 import com.example.fromis_7_be.state.like.entity.Like;
 import com.example.fromis_7_be.state.unlike.entity.Unlike;
@@ -49,7 +50,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comment;
-
 
     @PrePersist
     public void onCreate() {

@@ -1,5 +1,7 @@
 package com.example.fromis_7_be.share.entity;
 
+import com.example.fromis_7_be.piece.entity.Piece;
+import com.example.fromis_7_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,5 +24,9 @@ public class Share {
     public String shareURL;
 
     private LocalDateTime createdAt;
+
+    @OneToOne
+    @JoinColumn(name = "piece_id") // 외래 키로 사용할 컬럼 지정
+    private Piece piece;
 
 }
