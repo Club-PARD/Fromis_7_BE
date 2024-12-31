@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface AlignRepository extends JpaRepository<Align, Integer> {
-
     Optional<Align> findByUserAndListup(User user, Listup listup);
 
 }
