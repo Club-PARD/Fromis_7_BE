@@ -19,4 +19,19 @@ public class UserRequest {
         private String image;
         private String email;
     }
+    @Getter
+    @Builder
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserUpdateRequest{
+        private String name;
+    }
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProfileUpdateRequest {
+        private String name; // 추가로 소개나 연락처 같은 필드를 더 넣을 수 있음
+    }
 }

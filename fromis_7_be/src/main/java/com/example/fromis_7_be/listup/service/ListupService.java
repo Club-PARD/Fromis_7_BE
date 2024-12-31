@@ -8,13 +8,14 @@ import com.example.fromis_7_be.listup.dto.ListupResponse;
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.listup.repository.ListupRepository;
 import com.example.fromis_7_be.metadata.service.MetadataService;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
 public class ListupService {
@@ -23,6 +24,7 @@ public class ListupService {
      private final MetadataService metadataService;
 
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void createListupByCateId(Long cateId, List<ListupRequest.ListupCreateRequest> reqList) {
         Category category = categoryRepository.findById(cateId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
@@ -55,6 +57,7 @@ public class ListupService {
         listupRepository.saveAll(listups);
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteListupByCateId(Long cateId) {
         Category category = categoryRepository.findById(cateId)
                 .orElseThrow(() -> new NoSuchElementException("Category not found: " + cateId));
@@ -80,16 +83,7 @@ public class ListupService {
                 .map(ListupResponse.ListupReadResponse::from)
                 .orElseThrow(() -> new RuntimeException("Listup not found"));
     }
-
-    public ListupResponse.ListupReadResponse updateListup(Long listId, ListupRequest.ListupUpdateRequest req) {
-        Listup listup = listupRepository.findById(listId)
-                .orElseThrow(() -> new RuntimeException("Listup not found"));
-
-        listup.update(req.getName(), req.getUrl(), req.getImage(), req.getDescription());
-        listupRepository.save(listup);
-
-        return ListupResponse.ListupReadResponse.from(listup);
-    }
+    @Transactional(isolation = Isolation.SERIALIZABLE)
      public void delete(Long listupId){
          Listup listup = listupRepository.findById(listupId)
                  .orElseThrow(() -> new NoSuchElementException("찾으시는 list 정보: " + listupId + "가 존재하지 않습니다."));

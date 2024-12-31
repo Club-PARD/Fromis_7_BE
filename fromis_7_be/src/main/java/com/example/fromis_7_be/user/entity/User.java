@@ -1,6 +1,10 @@
 package com.example.fromis_7_be.user.entity;
 
-import com.example.fromis_7_be.like.entity.Like;
+import com.example.fromis_7_be.comment.entity.Comment;
+import com.example.fromis_7_be.share.entity.Share;
+import com.example.fromis_7_be.state.align.entity.Align;
+import com.example.fromis_7_be.state.like.entity.Like;
+import com.example.fromis_7_be.state.unlike.entity.Unlike;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,13 +43,13 @@ public class User {
     private List<Like> likes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> unlikes;
+    private List<Unlike> unlikes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> aligns;
+    private List<Align> aligns;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Like> comment;
+    private List<Comment> comment;
 
     @PrePersist
     public void onCreate() {
@@ -58,10 +62,10 @@ public class User {
         this.modifiedAt = LocalDateTime.now();
     }
 
-    public void update(String name, String profileImg, LocalDateTime modifiedAt){
+    public void update(String name){
+        LocalDateTime now = LocalDateTime.now();
         this.name = name;
-        this.profileImg = profileImg;
-        this.modifiedAt = modifiedAt;
+        this.modifiedAt = now;
     }
 
     public void setImage(String imageUrl) {

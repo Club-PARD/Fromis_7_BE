@@ -38,11 +38,11 @@ public class UserService {
         User u = new User(null, req.getName(), req.getEmail(), req.getImage(), now, now, new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>());
         userRepository.save(u);
     }
-    public UserResponse.ReadUser updateUser(Long userId, UserRequest.UserCreateRequest req){
+    public UserResponse.ReadUser updateUser(Long userId, UserRequest.UserUpdateRequest req){
         Optional<User> u = userRepository.findById(userId);
         User user = u.get();
         LocalDateTime now = LocalDateTime.now();
-        user.update(req.getName(), req.getImage(), now);
+        user.update(req.getName());
         userRepository.save(user);
         return readUser(userId);
     }

@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.piece.entity;
 
 import com.example.fromis_7_be.category.entity.Category;
+import com.example.fromis_7_be.share.entity.Share;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,7 @@ public class Piece {
     private Integer endYear;
     private Integer endMonth;
     private Integer endDay;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "modified_at")
@@ -46,6 +48,7 @@ public class Piece {
 
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
+
 
     @PrePersist
     protected void onCreate() {

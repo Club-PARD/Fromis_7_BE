@@ -18,6 +18,9 @@ public class CommentController {
         commentService.createComment(listId, userId, req);
     }
 
-
+    @DeleteMapping("/{commentId}")
+    public void deleteComment(@PathVariable Long commentId){
+        commentService.deleteComment(commentId);
+    }
 
 }

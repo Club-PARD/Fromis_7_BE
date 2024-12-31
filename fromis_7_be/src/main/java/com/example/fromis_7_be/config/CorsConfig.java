@@ -13,11 +13,11 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration( "*", config);
+        config.addAllowedOrigin("http://localhost:3000");  // 특정 Origin만 허용
+        config.addAllowedHeader("*"); // 모든 Header 허용
+        config.addAllowedMethod("*"); // 모든 HTTP Method 허용
+        source.registerCorsConfiguration("/**", config);  // 모든 경로에 적용
         return new CorsFilter(source);
-
     }
 }
+
