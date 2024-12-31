@@ -19,7 +19,7 @@ public class PieceController {
     @PostMapping("/{userId}")
     @Operation(summary = "piece 생성, userid 참조")
     public ResponseEntity<PieceResponse.PieceReadResponse> createPieceByUser(@PathVariable Long userId,
-                                            @RequestBody PieceRequest.PieceCreateRequest req){
+                                                                             @RequestBody PieceRequest.PieceCreateRequest req){
         PieceResponse.PieceReadResponse createPieceResponse =  pieceService.createPieceByUserId(userId, req);
         return ResponseEntity.ok().body(createPieceResponse);
     }
