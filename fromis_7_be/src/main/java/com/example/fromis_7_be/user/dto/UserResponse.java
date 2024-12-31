@@ -28,7 +28,7 @@ public class UserResponse {
         }
 
         public static ReadUser from(User u) {
-            return new ReadUser(u.getId(), u.getName(), u.getEmail(), null, null);
+            return new ReadUser(u.getId(), u.getName(), u.getEmail(), u.getProfileImg(), null);
         }
     }
 

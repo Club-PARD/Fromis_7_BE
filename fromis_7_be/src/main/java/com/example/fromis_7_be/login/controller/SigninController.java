@@ -37,7 +37,7 @@ public class SigninController {
         Optional<UserResponse.ReadUser> result = sigininService.loginuser(req);
 
         if (result.isEmpty()) {
-            return ResponseEntity.ok("로그인 실패 : 이메일 또는 비밀번호가 올바르지 않습니다.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
         return ResponseEntity.ok(result.get());
