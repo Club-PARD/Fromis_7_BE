@@ -15,8 +15,6 @@ public class ListupRequest {
     @AllArgsConstructor
     public static class ListupCreateRequest {
         private String url;
-        private String name;
-        private String image;
         private String description;
     }
 

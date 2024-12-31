@@ -7,6 +7,7 @@ import com.example.fromis_7_be.piece.dto.PieceRequest;
 import com.example.fromis_7_be.piece.service.PieceService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +19,10 @@ public class CategoryController {
     private final CategoryService categoryService;
     @PostMapping("{pieceId}")
     @Operation(summary = "category 생성, pieceId 참조")
-    public void createCategoryByPiece(@PathVariable Long pieceId,
+    public ResponseEntity<CategoryResponse.CategoryReadResponse> createCategoryByPiece(@PathVariable Long pieceId,
                                       @RequestBody CategoryRequest.CategoryCreateRequest req){
-        categoryService.createCategoryByPieceId(pieceId, req);
+        CategoryResponse.CategoryReadResponse createCategory = categoryService.createCategoryByPieceId(pieceId, req);
+        return ResponseEntity.ok(createCategory);
     }
 
     @GetMapping("/all/{pieceId}")
@@ -35,4 +37,12 @@ public class CategoryController {
         categoryService.delete(categoryId);
     }
 
+    @PatchMapping("{categoryId}")
+    @Operation(summary = "category 북마크 수정하기, categoryId 참조")
+    public ResponseEntity<CategoryResponse.CategoryReadResponse> updateCategoryHighlight(
+            @PathVariable Long categoryId,
+            @RequestParam boolean isHighlighted){
+        CategoryResponse.CategoryReadResponse updatedCategory = categoryService.updateByCategoryId(categoryId, isHighlighted);
+        return ResponseEntity.ok(updatedCategory);
+    }
 }

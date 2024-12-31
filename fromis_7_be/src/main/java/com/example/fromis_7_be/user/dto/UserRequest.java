@@ -34,4 +34,12 @@ public class UserRequest {
     public static class ProfileUpdateRequest {
         private String name; // 추가로 소개나 연락처 같은 필드를 더 넣을 수 있음
     }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor @AllArgsConstructor
+    public static class createSignRequest{
+        private String useremail;
+        private String password;
+    }
 }

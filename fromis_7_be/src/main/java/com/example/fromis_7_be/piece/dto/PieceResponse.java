@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class PieceResponse {
@@ -26,6 +27,7 @@ public class PieceResponse {
         private Integer endMonth;
         private Integer endDay;
         private List<Category> categories;
+        private LocalDateTime createdAt;
         //private int likeCount;
         //private boolean likedByCurrentUser;
 
@@ -41,6 +43,7 @@ public class PieceResponse {
                     .endYear(piece.getEndYear())
                     .endMonth(piece.getEndMonth())
                     .endDay(piece.getEndDay())
+                    .createdAt(piece.getCreatedAt())
                     .build();
         }
         public void setCategories(List<Category> categories) {

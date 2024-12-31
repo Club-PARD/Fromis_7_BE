@@ -18,8 +18,6 @@ public class CategoryRequest {
     public static class CategoryCreateRequest{
         private String color;
         private String name;
-        private Boolean isHighlighted; // 하이라이트 상태
-        private Long pieceId;
         private List<ListupRequest.ListupCreateRequest> listups;
     }
 

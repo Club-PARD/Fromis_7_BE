@@ -30,4 +30,5 @@ public class UserResponse {
     public static class ImageRet{
         private String imageUrl;
     }
+
 }

@@ -76,7 +76,7 @@ public class PieceService {
 
         return new PieceResponse.PieceReadResponse(piece.getId(), piece.getTitle(), piece.getMemberNames(),
                 piece.getColor(), piece.getStartYear(), piece.getStartMonth(), piece.getStartDay(), piece.getEndYear(),
-                piece.getEndMonth(), piece.getEndDay(), piece.getCategories());
+                piece.getEndMonth(), piece.getEndDay(), piece.getCategories(), piece.getCreatedAt());
     }
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public void delete(Long pieceId){

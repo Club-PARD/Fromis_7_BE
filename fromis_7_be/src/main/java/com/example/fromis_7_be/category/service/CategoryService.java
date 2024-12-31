@@ -26,7 +26,7 @@ public class CategoryService {
     private final PieceRepository pieceRepository;
     private final ListupService listupService;
 
-    public void createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
+    public CategoryResponse.CategoryReadResponse createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
 
         Piece piece = pieceRepository.findById(pieceId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + pieceId + "가 존재하지 않습니다."));
@@ -34,6 +34,16 @@ public class CategoryService {
         categoryRepository.save(category);
         listupService.deleteListupByCateId(category.getId());
         listupService.createListupByCateId(category.getId(), req.getListups());
+
+        return CategoryResponse.CategoryReadResponse.builder()
+                .cateId(category.getId())
+                .name(category.getName())
+                .color(category.getColor())
+                .isHighlighted(category.getIsHighlighted())
+                .lists(category.getLists().stream()
+                        .map(ListupResponse.ListupReadResponse::from)
+                        .collect(Collectors.toList()))
+                .build();
     }
 
     public List<CategoryResponse.CategoryReadResponse> readCategoryByPiece(Long pieceId) {
@@ -57,9 +67,24 @@ public class CategoryService {
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 
         categoryRepository.delete(category);
-
-
     }
+    public CategoryResponse.CategoryReadResponse updateByCategoryId(Long categoryId, boolean isHighlighted){
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 
+        category.setIsHighlighted(isHighlighted);
+
+        categoryRepository.save(category);
+
+        return CategoryResponse.CategoryReadResponse.builder()
+                .cateId(category.getId())
+                .name(category.getName())
+                .color(category.getColor())
+                .isHighlighted(category.getIsHighlighted())
+                .lists(category.getLists().stream()
+                        .map(ListupResponse.ListupReadResponse::from)
+                        .collect(Collectors.toList()))
+                .build();
+    }
 
 }
