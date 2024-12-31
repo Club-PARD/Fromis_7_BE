@@ -1,6 +1,6 @@
 package com.example.fromis_7_be.user.entity;
 
-import com.example.fromis_7_be.like.entity.Like;
+import com.example.fromis_7_be.state.like.entity.Like;
 import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
