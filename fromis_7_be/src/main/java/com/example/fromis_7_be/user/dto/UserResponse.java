@@ -22,12 +22,13 @@ public class UserResponse {
         private String image;
         private List<UserPieceResponse.UserPieceReadResponse> userPieces;
 
+
         public static ReadUser from(User user,  List<UserPieceResponse.UserPieceReadResponse> userPieces){
             return new ReadUser(user.getId(), user.getName(), user.getEmail(), user.getProfileImg(), userPieces);
         }
 
         public static ReadUser from(User u) {
-            return new ReadUser(u.getId(), u.getName(), u.getProfileImg(), null);
+            return new ReadUser(u.getId(), u.getName(), u.getEmail(), null, null);
         }
     }
 
