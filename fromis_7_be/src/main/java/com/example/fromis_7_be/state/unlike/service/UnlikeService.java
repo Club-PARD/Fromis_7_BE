@@ -2,6 +2,8 @@ package com.example.fromis_7_be.state.unlike.service;
 
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.listup.repository.ListupRepository;
+import com.example.fromis_7_be.state.like.entity.Like;
+import com.example.fromis_7_be.state.like.repository.LikeRepository;
 import com.example.fromis_7_be.state.unlike.entity.Unlike;
 import com.example.fromis_7_be.state.unlike.repository.UnlikeRepository;
 import com.example.fromis_7_be.user.entity.User;
@@ -18,6 +20,7 @@ public class UnlikeService {
     private final UnlikeRepository unlikeRepository;
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
+    private final LikeRepository likeRepository;
 
     @Transactional
     public boolean createUnlike(Long userId, Long listupId) {
@@ -33,6 +36,11 @@ public class UnlikeService {
             return false;
         }
         else {
+            Like existingLike = likeRepository.findByUserAndListup(user, listup).orElse(null);
+            if (existingLike != null) {
+                likeRepository.delete(existingLike); // 기존 좋아요 삭제
+            }
+
             Unlike unlike = Unlike.form(user, listup);
             unlikeRepository.save(unlike);
             return true;

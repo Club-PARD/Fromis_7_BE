@@ -24,6 +24,7 @@ public class LikeService {
     private final LikeRepository likeRepository;
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
+    private final UnlikeRepository unlikeRepository;
 
     @Transactional
     public boolean createLike(Long userId, Long listupId) {
@@ -39,6 +40,11 @@ public class LikeService {
             return false;
         }
         else {
+            Unlike existingUnLike = unlikeRepository.findByUserAndListup(user, listup).orElse(null);
+            if (existingUnLike != null) {
+                unlikeRepository.delete(existingUnLike); // 기존 좋아요 삭제
+            }
+
             Like unlike = Like.form(user, listup);
             likeRepository.save(unlike);
             return true;
