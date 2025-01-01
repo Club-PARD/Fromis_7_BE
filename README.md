@@ -24,10 +24,9 @@
 - **프레임워크**: Spring Boot  
 - **데이터베이스 관리**: JPA (Hibernate)  
 - **API 설계**: RESTful 방식  
-- **인증 및 보안**: JWT(JSON Web Token) 기반 인증  
 - **파일 관리**: AWS S3를 사용한 파일 업로드 및 저장  
 - **서버 배포**: AWS EC2를 사용한 애플리케이션 배포  
-- **문서화 도구**: Swagger(OpenAPI 3.0)  
+- **문서화 도구**: Swagger(OpenAPI 1.0)  
 
 <p align="center">
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
@@ -73,8 +72,8 @@
 ## 개발자 소개 🧑‍💻
 | 이름  | 구현 기능 |
 |-------|-----------|
-| **김하진 🐿️** | API 설계, 데이터베이스 연동, AWS |
+| **김하진 🐿️** | API 설계, 데이터베이스 연동 |
 | **이수인 🐾** | 파일 업로드 기능, AWS S3 연동 |
-|**공동작업** | | 
+|**공동작업** |  | 
 
 ---
