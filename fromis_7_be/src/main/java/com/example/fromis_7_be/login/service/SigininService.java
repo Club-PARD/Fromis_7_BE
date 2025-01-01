@@ -14,7 +14,7 @@ import java.util.Optional;
 public class SigininService {
     private final UserRepository userRepository;
 
-    public Optional<UserResponse.ReadUser> loginuser(UserRequest.LoginUserRequest req) {
+    public Optional<UserResponse.ReadUser> loginUser(UserRequest.LoginUserRequest req) {
         Optional<User> userOptional = userRepository.findByEmail(req.getEmail());
 
         if (userOptional.isEmpty()) {
@@ -29,6 +29,14 @@ public class SigininService {
         } else {
             return Optional.empty();
         }
+    }
+
+    public Boolean loginCheck(String id) {
+        Optional<User> userOptional = userRepository.findByEmail(id);
+        if (userOptional.isEmpty()) {
+            return true;
+        }
+        else return false;
     }
 
 }

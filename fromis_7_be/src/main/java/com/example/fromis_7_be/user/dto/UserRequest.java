@@ -42,4 +42,11 @@ public class UserRequest {
         private String email;
         private String password;
     }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor @AllArgsConstructor
+    public static class LoginCheckRequest {
+        private String email;
+    }
 }

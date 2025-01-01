@@ -34,7 +34,7 @@ public class SigninController {
     @PostMapping("/login")
     @Operation(summary = "로그인할 때 쓰세요")
     public ResponseEntity<?> login(@RequestBody UserRequest.LoginUserRequest req) {
-        Optional<UserResponse.ReadUser> result = sigininService.loginuser(req);
+        Optional<UserResponse.ReadUser> result = sigininService.loginUser(req);
 
         if (result.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -43,4 +43,15 @@ public class SigninController {
         return ResponseEntity.ok(result.get());
     }
 
+    @PostMapping("/logincheck")
+    @Operation(summary = "로그인 이메일 중복처리 할 때 쓰세요")
+    public ResponseEntity<Boolean> loginCheck(@RequestBody UserRequest.LoginCheckRequest req) {
+        boolean ret = sigininService.loginCheck(req.getEmail());
+
+        if (ret) {
+            return ResponseEntity.ok(ret);
+        }
+        else return ResponseEntity.status(HttpStatus.CONFLICT).build();
+
+    }
 }
