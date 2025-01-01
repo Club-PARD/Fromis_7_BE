@@ -21,12 +21,13 @@ public class AlarmController {
      * SSE 구독 엔드포인트
      */
     @GetMapping("/subscribe")
-    public SseEmitter subscribe(@RequestHeader(value = "Authorization") String authorizationHeader) {
+    public SseEmitter subscribe(@RequestParam Long userId) {
+        //@RequestHeader(value = "Authorization") String authorizationHeader
         // Authorization 헤더에서 사용자 ID 추출
-        Long userId = extractUserIdFromHeader(authorizationHeader);
-        if (userId == null) {
-            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
-        }
+//        Long userId = extractUserIdFromHeader(authorizationHeader);
+//        if (userId == null) {
+//            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
+//        }
         // 사용자 ID로 AlarmService의 subscribe 메서드 호출
         return alarmService.subscribe(userId);
     }
@@ -35,11 +36,11 @@ public class AlarmController {
      * 사용자 알림 메시지 리스트 반환
      */
     @GetMapping("/notifications")
-    public List<String> getNotifications(@RequestHeader(value = "Authorization") String authorizationHeader) {
-        Long userId = extractUserIdFromHeader(authorizationHeader);
-        if (userId == null) {
-            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
-        }
+    public List<String> getNotifications(@RequestParam Long userId) {
+//        Long userId = extractUserIdFromHeader(authorizationHeader);
+//        if (userId == null) {
+//            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
+//        }
         return alarmService.getNotifications(userId);
     }
 
