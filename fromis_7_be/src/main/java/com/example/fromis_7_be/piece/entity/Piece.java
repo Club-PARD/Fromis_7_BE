@@ -51,6 +51,9 @@ public class Piece {
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL) // 관계 매핑 및 연관된 엔티티 자동 저장
+    @JoinColumn(name = "piece_id") // 외래 키 컬럼 이름 지정
+    private Share share;
 
     @PrePersist
     protected void onCreate() {

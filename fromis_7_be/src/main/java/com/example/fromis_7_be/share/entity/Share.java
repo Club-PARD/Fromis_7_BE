@@ -25,7 +25,7 @@ public class Share {
 
     private LocalDateTime createdAt;
 
-    @OneToOne
+    @OneToOne(mappedBy = "piece") // 관계의 반대쪽 설정
     public Piece piece;
 
 
