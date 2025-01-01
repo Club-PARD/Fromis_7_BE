@@ -1,8 +1,11 @@
-![image](https://github.com/user-attachments/assets/61f560fc-edeb-4b33-9f80-053653ffe892)
-
-
 # 🔙 프로젝트 개요 🌈
 여행 준비 과정에서 발생하는 의사결정의 어려움과 이를 해결하기 위한 양방향 소통 플랫폼 **"링크"** 🔗
+
+---
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/61f560fc-edeb-4b33-9f80-053653ffe892" alt="프로젝트 이미지" width="600"/>
+</div>
 
 ---
 
