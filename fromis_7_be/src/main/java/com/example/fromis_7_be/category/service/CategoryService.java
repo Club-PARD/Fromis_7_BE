@@ -79,16 +79,17 @@ public class CategoryService {
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 
         category.setIsHighlighted(isHighlighted);
-
         List<UserPiece> userPieces = userPieceRepository.findByPieceId(category.getPiece().getId());
         if (userPieces.isEmpty()) {
             throw new IllegalArgumentException("해당 piece에 연결된 사용자가 없습니다.");
         }
 
-        // 모든 사용자에게 알림 전송
-        for (UserPiece userPiece : userPieces) {
-            User user = userPiece.getUser();
-            alarmService.notifyCategoryCreated(user, category);
+        if(isHighlighted) {
+            // 모든 사용자에게 알림 전송
+            for (UserPiece userPiece : userPieces) {
+                User user = userPiece.getUser();
+                alarmService.notifyCategoryCreated(user, category);
+            }
         }
         categoryRepository.save(category);
 
