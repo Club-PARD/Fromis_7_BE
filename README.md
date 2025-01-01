@@ -8,8 +8,16 @@
 
 3. 우선순위 기능: 선호 수에 따라 정보의 순서가 자동으로 조정되며, 선호와 비선호 수를 종합적으로 고려하여 순위를 계산합니다. 이를 통해 효율적인 의사결정이 가능해집니다.
 
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+</p>
+
 이 프로젝트는 Intelij를 사용해서 spring boot 프레임워크를 사용해서 개발되었다.
-![image](https://github.com/user-attachments/assets/2d72958a-f194-43d6-b2db-16a9b31b5e9d)
 
 
 ## 개발자 소개 & 개인별 구현 기능 
