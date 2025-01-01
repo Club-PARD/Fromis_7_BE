@@ -67,6 +67,17 @@ public class ListupService {
         listupRepository.deleteAll(listups);
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public ListupResponse.ListupReadResponse updateListupById(Long listId, String description) {
+        Listup listup = listupRepository.findById(listId)
+                .orElseThrow(() -> new NoSuchElementException("Listup not found: " + listId));
+
+        listup.update(description);
+        listupRepository.save(listup);
+
+        return ListupResponse.ListupReadResponse.from(listup);
+    }
+
     public List<ListupResponse.ListupReadResponse> readListupByCategory(Long cateId) {
         // 1. 카테고리 조회
         Category cate = categoryRepository.findById(cateId)

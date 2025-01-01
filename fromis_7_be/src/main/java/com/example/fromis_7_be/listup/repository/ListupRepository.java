@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ListupRepository extends JpaRepository<Listup, Long> {
     List<Listup> findAllByCategory(Category category);
+
 }

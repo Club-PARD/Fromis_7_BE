@@ -58,6 +58,23 @@ public class ListupController {
         return listupService.readListupById(listId);
     }
 
+    @PatchMapping("/{listId}")
+    @Operation(summary = "list description 수정하기, listId 참조")
+    public ResponseEntity<ListupResponse.ListupReadResponse> updateListupDescription(
+            @PathVariable Long listId,
+            @RequestBody String description) {
+        ListupResponse.ListupReadResponse response = listupService.updateListupById(listId, description);
+        return ResponseEntity.ok(response);
+    }
+
+
+    @DeleteMapping("/{listId}")
+    @Operation(summary = "list 삭제하기, listId 참조")
+    public ResponseEntity<Void> delete(@PathVariable Long listId) {
+        listupService.delete(listId);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/all/{categoryId}")
     @Operation(summary = "list 전체 정보 가져오기 , categoryid 참조")
     public List<ListupResponse.ListupReadResponse> readListupByCate(
