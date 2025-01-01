@@ -1,6 +1,7 @@
 package com.example.fromis_7_be.state.like.entity;
 
 import com.example.fromis_7_be.listup.entity.Listup;
+import com.example.fromis_7_be.state.like.dto.LikeRequest;
 import com.example.fromis_7_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,10 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String color;
+
+    private Boolean liked;
+
     private LocalDateTime createdAt;
 
     @ManyToOne
@@ -36,8 +41,13 @@ public class Like {
         this.createdAt = LocalDateTime.now();
     }
 
-    public static Like form(User user, Listup listup){
-        return new Like(null, null, user, listup);
+    public static Like form(User user, Listup listup, String color) {
+        return new Like(null, color ,false, LocalDateTime.now(), user, listup);
     }
+
+    public void updateColor(String color){
+        this.color = color;
+    }
+
 
 }

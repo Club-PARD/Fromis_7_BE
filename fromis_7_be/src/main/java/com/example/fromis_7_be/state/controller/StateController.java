@@ -1,16 +1,15 @@
 package com.example.fromis_7_be.state.controller;
 
 import com.example.fromis_7_be.state.align.service.AlignService;
+import com.example.fromis_7_be.state.like.dto.LikeRequest;
+import com.example.fromis_7_be.state.like.dto.LikeResponse;
 import com.example.fromis_7_be.state.like.service.LikeService;
 import com.example.fromis_7_be.state.unlike.service.UnlikeService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +21,8 @@ public class StateController {
 
     @PostMapping("/likes/{listId}/{userId}")
     @Operation(summary = "Like 생성하기. userId, listId 참조")
-    public ResponseEntity<Boolean> createLike (@PathVariable Long userId, @PathVariable Long listId){
-        boolean ret = likeService.createLike(userId, listId);
+    public ResponseEntity<LikeResponse.LikeRead> createLike (@PathVariable Long userId, @PathVariable Long listId) {
+        LikeResponse.LikeRead ret = likeService.createLike(userId, listId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 
