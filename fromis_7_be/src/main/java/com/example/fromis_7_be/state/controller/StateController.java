@@ -21,8 +21,8 @@ public class StateController {
 
     @PostMapping("/likes/{listId}/{userId}")
     @Operation(summary = "Like 생성하기. userId, listId 참조")
-    public ResponseEntity<LikeResponse.LikeRead> createLike (@PathVariable Long userId, @PathVariable Long listId) {
-        LikeResponse.LikeRead ret = likeService.createLike(userId, listId);
+    public ResponseEntity<Boolean> createLike (@PathVariable Long userId, @PathVariable Long listId) {
+        boolean ret = likeService.createLike(userId, listId);
         return ResponseEntity.status(HttpStatus.CREATED).body(ret);
     }
 

@@ -21,10 +21,6 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String color;
-
-    private Boolean liked;
-
     private LocalDateTime createdAt;
 
     @ManyToOne
@@ -41,12 +37,8 @@ public class Like {
         this.createdAt = LocalDateTime.now();
     }
 
-    public static Like form(User user, Listup listup, String color) {
-        return new Like(null, color ,true, LocalDateTime.now(), user, listup);
-    }
-
-    public void updateColor(String color){
-        this.color = color;
+    public static Like form(User user, Listup listup) {
+        return new Like(null, LocalDateTime.now(), user, listup);
     }
 
 
