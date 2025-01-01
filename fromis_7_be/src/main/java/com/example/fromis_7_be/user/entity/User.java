@@ -1,5 +1,6 @@
 package com.example.fromis_7_be.user.entity;
 
+import com.example.fromis_7_be.alarm.entity.Alarm;
 import com.example.fromis_7_be.comment.entity.Comment;
 import com.example.fromis_7_be.share.entity.Share;
 import com.example.fromis_7_be.state.align.entity.Align;
@@ -52,6 +53,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comment;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Alarm> alarm;
 
     @PrePersist
     public void onCreate() {
