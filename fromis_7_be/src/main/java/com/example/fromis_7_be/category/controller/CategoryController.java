@@ -47,7 +47,7 @@ public class CategoryController {
         return ResponseEntity.ok(updatedCategory);
     }
 
-    @PatchMapping("{categoryId}")
+    @PatchMapping("/{categoryId}")
     @Operation(summary = "category 추가(수정) 삭제, categoryId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> updateCategoryListup(
             @PathVariable Long categoryId, @RequestBody CategoryRequest.CategoryCreateRequest req) {
