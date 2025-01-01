@@ -3,6 +3,7 @@ package com.example.fromis_7_be.alarm.controller;
 import com.example.fromis_7_be.alarm.dto.MsgResponseDto;
 import com.example.fromis_7_be.alarm.service.AlarmService;
 import com.example.fromis_7_be.user.entity.User;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,9 @@ public class AlarmController {
     /**
      * SSE 구독 엔드포인트
      */
+
     @GetMapping("/subscribe")
+    @Operation(summary = "알림 자동 생성, 프론트는 신경쓰지 않으셔도 됩니다." )
     public SseEmitter subscribe(@RequestParam Long userId) {
         //@RequestHeader(value = "Authorization") String authorizationHeader
         // Authorization 헤더에서 사용자 ID 추출
@@ -38,6 +41,7 @@ public class AlarmController {
      * 사용자 알림 메시지 리스트 반환
      */
     @GetMapping("/notifications")
+    @Operation(summary = "알림 List<String> 형식으로 response 합니다.")
     public MsgResponseDto getNotifications(@RequestParam Long userId) {
         List<String> notifications = alarmService.getNotifications(userId);
         return new MsgResponseDto(notifications, LocalDateTime.now());
