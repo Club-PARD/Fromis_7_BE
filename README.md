@@ -75,7 +75,9 @@
 
 
 ## ERD
-<img width="300" alt="스크린샷 2025-01-02 오전 4 39 52" src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" />
+<div align="center">
+  <img width="500" alt="스크린샷 2025-01-02 오전 4 39 52" src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" />
+</div>
 
 ---
 
