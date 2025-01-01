@@ -35,7 +35,7 @@ public class UserService {
     }
     public void createUser(UserRequest.UserCreateRequest req){
         LocalDateTime now = LocalDateTime.now();
-        User u = new User(null, req.getName(), req.getEmail(), req.getPassword(),"https://imageuploadproject.s3.ap-northeast-2.amazonaws.com/fromis7/Ellipse+37.png" , now, null, new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>());
+        User u = new User(null, req.getName(), req.getEmail(), req.getPassword(),"https://imageuploadproject.s3.ap-northeast-2.amazonaws.com/fromis7/Ellipse+37.png" , now, null, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>(),  new ArrayList<>());
         userRepository.save(u);
     }
     public UserResponse.ReadUser updateUser(Long userId, UserRequest.UserUpdateRequest req){
