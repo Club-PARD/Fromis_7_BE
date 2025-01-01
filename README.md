@@ -1,8 +1,4 @@
-<div align="center">  
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=40&duration=3000&pause=2300&color=6BA1FF&center=true&random=false&height=80&lines=L:nk" alt="Typing SVG" />
-  </a>
-   
+
 # 🔙 프로젝트 개요 🌈
 여행 준비 과정에서 발생하는 의사결정의 어려움과 이를 해결하기 위한 양방향 소통 플랫폼 **"링크"** 🔗
 
@@ -93,13 +89,5 @@
 |-------|-----------|
 | **김하진 🐿️** | - API 설계 및 데이터베이스 연동<br> - 로그인 및 JWT 인증<br> - AWS S3 연동 및 파일 업로드 기능 |
 | **이수인 🐾** | - 우선순위 계산 로직 구현<br> - 댓글 및 선호/비선호 기능<br> - RESTful API 최적화 |
-
----
-
-### **프론트엔드**
-| 이름  | 구현 기능 |
-|-------|-----------|
-| ** 🌟** | - Vue.js 기반 UI 설계<br> - Axios를 이용한 API 연동<br> - 여행 카테고리 리스트 및 정렬 기능 |
-| **최서현 🐤** | - 댓글 및 좋아요/싫어요 기능 구현<br> - 링크 기반 자동 정보 생성 UI<br> - Vuetify를 활용한 화면 구성 |
 
 ---
