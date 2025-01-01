@@ -39,5 +39,3 @@ out/
 
 ### Ignore .properties files ###
 *.properties
-
-.idea/
