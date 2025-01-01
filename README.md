@@ -74,6 +74,8 @@
 [API 명세서](<https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4>)
 
 
+---
+
 ## ERD
 <div align="center">
   <img width="500" alt="스크린샷 2025-01-02 오전 4 39 52" src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" />
