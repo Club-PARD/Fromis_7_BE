@@ -4,10 +4,12 @@ import com.example.fromis_7_be.alarm.dto.MsgResponseDto;
 import com.example.fromis_7_be.alarm.service.AlarmService;
 import com.example.fromis_7_be.user.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -36,30 +38,22 @@ public class AlarmController {
      * 사용자 알림 메시지 리스트 반환
      */
     @GetMapping("/notifications")
-    public List<String> getNotifications(@RequestParam Long userId) {
-//        Long userId = extractUserIdFromHeader(authorizationHeader);
-//        if (userId == null) {
-//            throw new IllegalArgumentException("유효하지 않은 Authorization 헤더입니다.");
-//        }
-        return alarmService.getNotifications(userId);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public MsgResponseDto deleteAlarm(@PathVariable Long id) throws IOException {
-        return alarmService.deleteNotification(id);
+    public MsgResponseDto getNotifications(@RequestParam Long userId) {
+        List<String> notifications = alarmService.getNotifications(userId);
+        return new MsgResponseDto(notifications, LocalDateTime.now());
     }
 
     /**
      * Authorization 헤더에서 사용자 ID 추출
      */
-    private Long extractUserIdFromHeader(String header) {
-        if (header != null && header.startsWith("Bearer ")) {
-            try {
-                return Long.parseLong(header.substring(7)); // "Bearer " 이후의 값
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Authorization 헤더에서 유효한 사용자 ID를 추출할 수 없습니다.");
-            }
-        }
-        throw new IllegalArgumentException("Authorization 헤더가 올바르지 않습니다.");
-    }
+//    private Long extractUserIdFromHeader(String header) {
+//        if (header != null && header.startsWith("Bearer ")) {
+//            try {
+//                return Long.parseLong(header.substring(7)); // "Bearer " 이후의 값
+//            } catch (NumberFormatException e) {
+//                throw new IllegalArgumentException("Authorization 헤더에서 유효한 사용자 ID를 추출할 수 없습니다.");
+//            }
+//        }
+//        throw new IllegalArgumentException("Authorization 헤더가 올바르지 않습니다.");
+//    }
 }

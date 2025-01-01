@@ -31,9 +31,6 @@ public class AlarmService {
     // SseEmitter 관리 맵
     private final Map<Long, SseEmitter> sseEmitters = new ConcurrentHashMap<>();
     // 알림 카운트 관리 맵
-    private final Map<Long, Integer> notificationCounts = new ConcurrentHashMap<>();
-    private final Map<Long, List<String>> userNotifications = new ConcurrentHashMap<>();
-
 
     /**
      * SSE 구독
@@ -97,9 +94,10 @@ public class AlarmService {
     /**
      * 사용자 알림 조회
      */
-    public List<AlarmResponse> getAlarms(Long userId) {
+    public List<String> getNotifications(Long userId) {
+        // 알림 메시지를 DB에서 조회하거나 메모리 맵에서 가져옵니다.
         return alarmRepository.findAllByUserId(userId).stream()
-                .map(AlarmResponse::from)
+                .map(Alarm::getMessage) // 알림 메시지만 추출
                 .collect(Collectors.toList());
     }
 
@@ -122,10 +120,6 @@ public class AlarmService {
         // 알림 전송
         sendNotification(user.getId(), "newPiece", message);
     }
-
-    public List<String> getNotifications(Long userId) {
-        return userNotifications.getOrDefault(userId, List.of());
-    }
     /**
      * 하이라이트된 카테고리 알림 전송
      */
@@ -146,32 +140,5 @@ public class AlarmService {
         sendNotification(user.getId(), "highlightedCategory", message);
     }
 
-    /**
-     * 알림 삭제
-     */
-    public MsgResponseDto deleteNotification(Long id) {
-        Alarm alarm = alarmRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("알림을 찾을 수 없습니다.")
-        );
-
-        Long userId = alarm.getUser().getId();
-
-        alarmRepository.delete(alarm);
-
-        // 알림 개수 감소
-        notificationCounts.put(userId, Math.max(0, notificationCounts.getOrDefault(userId, 0) - 1));
-
-        // 현재 알림 개수 전송
-        SseEmitter sseEmitter = sseEmitters.get(userId);
-        if (sseEmitter != null) {
-            try {
-                sseEmitter.send(SseEmitter.event().name("notificationCount").data(notificationCounts.get(userId)));
-            } catch (IOException e) {
-                System.err.println("Failed to send updated notification count: " + e.getMessage());
-            }
-        }
-
-        return new MsgResponseDto("알림이 삭제되었습니다.", HttpStatus.OK.value());
-    }
 
 }
