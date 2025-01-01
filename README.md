@@ -4,7 +4,7 @@
 ---
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/61f560fc-edeb-4b33-9f80-053653ffe892" alt="프로젝트 이미지" width="600"/>
+  <img src="https://github.com/user-attachments/assets/61f560fc-edeb-4b33-9f80-053653ffe892" alt="프로젝트 이미지" width="300"/>
 </div>
 
 ---
