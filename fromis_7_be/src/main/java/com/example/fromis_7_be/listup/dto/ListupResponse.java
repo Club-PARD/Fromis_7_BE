@@ -28,6 +28,7 @@ public class ListupResponse {
         private int unlikeCount;
         private int alginCount;
         private ArrayList<CommentResponse.CommentReadResponse> comments;
+        private int preferCount;
 
         public static ListupReadResponse from(Listup listup) {
             return ListupReadResponse.builder()
@@ -44,6 +45,7 @@ public class ListupResponse {
                                     .map(CommentResponse.CommentReadResponse::from)
                                     .collect(Collectors.toCollection(ArrayList::new))
                     )
+                    .preferCount(listup.getLikes().size()-listup.getUnlikes().size())
                     .build();
         }
 
