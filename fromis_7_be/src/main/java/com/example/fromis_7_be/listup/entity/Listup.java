@@ -69,10 +69,7 @@ public class Listup {
         return new Listup(null, name, url, image, description, LocalDateTime.now(), LocalDateTime.now(), category, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),new ArrayList<>());
     }
 
-    public void update(String name, String url, String image, String description) {
-        this.name = name;
-        this.url = url;
-        this.image = image;
+    public void update(String description) {
         this.description = description;
     }
 }
