@@ -62,51 +62,6 @@
 
 ---
 
-## ⚙️ 설치 및 실행 방법
-
-### **1. 프로젝트 클론**
-```sh
-git clone https://github.com/your-repo/link-backend.git
-cd link-backend
-```
-
-### **2. 환경 변수 설정**
-- `application.yml` 또는 `.env` 파일을 작성하여 아래 값을 설정:
-```yaml
-server:
-  port: 8080
-
-spring:
-  datasource:
-    url: jdbc:mysql://<DB_HOST>:<DB_PORT>/<DB_NAME>
-    username: <DB_USERNAME>
-    password: <DB_PASSWORD>
-  jpa:
-    hibernate:
-      ddl-auto: update
-
-aws:
-  s3:
-    bucket-name: <BUCKET_NAME>
-    region: <REGION>
-  access-key: <AWS_ACCESS_KEY>
-  secret-key: <AWS_SECRET_KEY>
-jwt:
-  secret: <JWT_SECRET>
-```
-
-### **3. 종속성 설치 및 빌드**
-```sh
-./gradlew build
-```
-
-### **4. 실행**
-```sh
-java -jar build/libs/link-backend-0.0.1-SNAPSHOT.jar
-```
-
----
-
 ## 📚 API 명세
 
 | 메서드 | 엔드포인트               | 설명                     |
