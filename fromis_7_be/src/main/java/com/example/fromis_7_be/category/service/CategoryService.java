@@ -17,6 +17,7 @@ import com.example.fromis_7_be.userpiece.entity.UserPiece;
 import com.example.fromis_7_be.userpiece.repository.UserPieceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,6 +34,7 @@ public class CategoryService {
     private final AlarmService alarmService;
     private final UserPieceRepository userPieceRepository;
     private final ListupRepository listupRepository;
+    @Transactional
     public CategoryResponse.CategoryReadResponse createCategoryByPieceId(Long pieceId, CategoryRequest.CategoryCreateRequest req){
 
         Piece piece = pieceRepository.findById(pieceId)
@@ -68,12 +70,15 @@ public class CategoryService {
                         .build()
                 ).collect(Collectors.toList());
     }
+
+    @Transactional
     public void delete(Long categoryId){
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 
         categoryRepository.delete(category);
     }
+    @Transactional
     public CategoryResponse.CategoryReadResponse updateByCategoryId(Long categoryId, boolean isHighlighted){
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
@@ -104,6 +109,7 @@ public class CategoryService {
                 .build();
     }
 
+    @Transactional
     public CategoryResponse.CategoryReadResponse updateByCategoryListup(Long categoryId, CategoryRequest.CategoryCreateRequest req){
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));

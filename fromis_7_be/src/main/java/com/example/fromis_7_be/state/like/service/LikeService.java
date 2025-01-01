@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.listup.repository.ListupRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class LikeService {
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
 
+    @Transactional
     public boolean createLike(Long userId, Long listupId) {
         Optional<Listup> l = listupRepository.findById(listupId);
         Listup listup = l.get();

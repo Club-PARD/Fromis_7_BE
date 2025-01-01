@@ -10,6 +10,8 @@ import com.example.fromis_7_be.user.entity.User;
 import com.example.fromis_7_be.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,6 +23,7 @@ public class CommentService {
     private final ListupRepository listupRepository;
     private final CommentRepository commentRepository;
 
+    @Transactional
     public CommentResponse.CommentReadResponse createComment(Long listupId, Long userId, CommentRequest.CommentCreateRequest req){
         Listup listup = listupRepository.findById(listupId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 listup 정보: " + listupId + "가 존재하지 않습니다."));
@@ -33,6 +36,7 @@ public class CommentService {
         return CommentResponse.CommentReadResponse.from(comment);
     }
 
+    @Transactional
     public void deleteComment(Long commentId){
         Comment comment = commentRepository.findById(commentId).orElseThrow(IllegalAccessError::new);
         commentRepository.delete(comment);

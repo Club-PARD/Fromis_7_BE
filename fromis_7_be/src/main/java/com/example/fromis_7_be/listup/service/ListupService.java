@@ -24,7 +24,7 @@ public class ListupService {
      private final MetadataService metadataService;
 
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public void createListupByCateId(Long cateId, List<ListupRequest.ListupCreateRequest> reqList) {
         Category category = categoryRepository.findById(cateId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
@@ -57,7 +57,7 @@ public class ListupService {
         listupRepository.saveAll(listups);
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public void deleteListupByCateId(Long cateId) {
         Category category = categoryRepository.findById(cateId)
                 .orElseThrow(() -> new NoSuchElementException("Category not found: " + cateId));
@@ -67,7 +67,7 @@ public class ListupService {
         listupRepository.deleteAll(listups);
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public ListupResponse.ListupReadResponse updateListupById(Long listId, String description) {
         Listup listup = listupRepository.findById(listId)
                 .orElseThrow(() -> new NoSuchElementException("Listup not found: " + listId));
@@ -94,7 +94,7 @@ public class ListupService {
                 .map(ListupResponse.ListupReadResponse::from)
                 .orElseThrow(() -> new RuntimeException("Listup not found"));
     }
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
      public void delete(Long listupId){
          Listup listup = listupRepository.findById(listupId)
                  .orElseThrow(() -> new NoSuchElementException("찾으시는 list 정보: " + listupId + "가 존재하지 않습니다."));
