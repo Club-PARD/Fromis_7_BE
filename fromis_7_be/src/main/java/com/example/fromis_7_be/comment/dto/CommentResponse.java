@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class CommentResponse {
         private Long commentId;
         private Long listupId;
         private Long userId;
+        private String userName;
+        private LocalDateTime createdAt;
         private String content;
 
         public static CommentReadResponse from(Comment comment) {
@@ -26,6 +29,8 @@ public class CommentResponse {
                     .commentId(comment.getId())
                     .listupId(comment.getListup().getListId())
                     .userId(comment.getUser().getId())
+                    .userName(comment.getUser().getName())
+                    .createdAt(comment.getCreatedAt())
                     .content(comment.getContent())
                     .build();
         }

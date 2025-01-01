@@ -16,5 +16,4 @@ public class LikeResponse {
         private Long likeId;
 
     }
-
 }
