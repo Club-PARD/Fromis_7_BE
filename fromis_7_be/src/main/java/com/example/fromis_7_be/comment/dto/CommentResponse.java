@@ -21,6 +21,7 @@ public class CommentResponse {
         private Long listupId;
         private Long userId;
         private String userName;
+        private String imageUrl;
         private LocalDateTime createdAt;
         private String content;
 
@@ -30,6 +31,7 @@ public class CommentResponse {
                     .listupId(comment.getListup().getListId())
                     .userId(comment.getUser().getId())
                     .userName(comment.getUser().getName())
+                    .imageUrl(comment.getUser().getProfileImg())
                     .createdAt(comment.getCreatedAt())
                     .content(comment.getContent())
                     .build();

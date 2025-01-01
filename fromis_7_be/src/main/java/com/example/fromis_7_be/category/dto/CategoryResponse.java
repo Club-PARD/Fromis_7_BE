@@ -30,6 +30,8 @@ public class CategoryResponse {
                     .lists(category.getLists().stream()
                             .map(ListupResponse.ListupReadResponse::from) // 변환
                             .toList())
+                    // 근데 카테고리에서 굳이 리스트를 가져올 필요가 있는 건가 싶은 생각.
+                    // 만약 카테고리에서 리스트를 가져오지 않아도 된다면 그냥 id값만 리스트화 시키는 건 어떨지 생각해보기
                     .build();
         }
     }
