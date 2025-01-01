@@ -2,6 +2,7 @@ package com.example.fromis_7_be.metadata.controller;
 
 
 import com.example.fromis_7_be.metadata.service.MetadataService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class MetaDataContoller {
     private final MetadataService metadataService;
 
     @PostMapping("/metadataByUrl")
+    @Operation(summary = "Metadata 처리하기")
     public ResponseEntity<Map<String, Object>> getPageData(@RequestBody Map<String, String> request) {
         String url = request.get("url");
 

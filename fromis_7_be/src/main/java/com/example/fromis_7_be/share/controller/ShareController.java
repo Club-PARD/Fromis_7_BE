@@ -30,7 +30,7 @@ public class ShareController {
     }
 
     @DeleteMapping("/{shareId}")
-    @Operation(summary = "share")
+    @Operation(summary = "share 삭제하기(사용되지 않습니다.)")
     public void deleteShare(@PathVariable Long shareId) {
         shareService.deleteShareURL(shareId);
     }
