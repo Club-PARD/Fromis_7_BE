@@ -41,16 +41,6 @@ public class CategoryService {
         categoryRepository.save(category);
         listupService.createListupByCateId(category.getId(), req.getListups());
 
-        List<UserPiece> userPieces = userPieceRepository.findByPieceId(pieceId);
-        if (userPieces.isEmpty()) {
-            throw new IllegalArgumentException("해당 piece에 연결된 사용자가 없습니다.");
-        }
-
-        // 모든 사용자에게 알림 전송
-        for (UserPiece userPiece : userPieces) {
-            User user = userPiece.getUser();
-            alarmService.notifyCategoryCreated(user, category);
-        }
         return CategoryResponse.CategoryReadResponse.builder()
                 .cateId(category.getId())
                 .name(category.getName())
@@ -90,6 +80,16 @@ public class CategoryService {
 
         category.setIsHighlighted(isHighlighted);
 
+        List<UserPiece> userPieces = userPieceRepository.findByPieceId(category.getPiece().getId());
+        if (userPieces.isEmpty()) {
+            throw new IllegalArgumentException("해당 piece에 연결된 사용자가 없습니다.");
+        }
+
+        // 모든 사용자에게 알림 전송
+        for (UserPiece userPiece : userPieces) {
+            User user = userPiece.getUser();
+            alarmService.notifyCategoryCreated(user, category);
+        }
         categoryRepository.save(category);
 
         return CategoryResponse.CategoryReadResponse.builder()
