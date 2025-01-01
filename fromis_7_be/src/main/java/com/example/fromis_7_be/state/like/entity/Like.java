@@ -42,7 +42,7 @@ public class Like {
     }
 
     public static Like form(User user, Listup listup, String color) {
-        return new Like(null, color ,false, LocalDateTime.now(), user, listup);
+        return new Like(null, color ,true, LocalDateTime.now(), user, listup);
     }
 
     public void updateColor(String color){
