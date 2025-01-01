@@ -10,6 +10,7 @@ import com.example.fromis_7_be.share.repository.ShareRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -22,7 +23,7 @@ public class ShareService {
         Optional<Piece> p = pieceRepository.findById(pieceId);
         Piece piece = p.get();
 
-        Share share = new Share(null , shareURL , null );
+        Share share = new Share(null , shareURL , LocalDateTime.now() , piece);
         shareRepository.save(share);
     }
 

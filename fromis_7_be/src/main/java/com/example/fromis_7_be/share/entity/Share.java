@@ -25,5 +25,8 @@ public class Share {
 
     private LocalDateTime createdAt;
 
+    @OneToOne
+    public Piece piece;
+
 
 }
