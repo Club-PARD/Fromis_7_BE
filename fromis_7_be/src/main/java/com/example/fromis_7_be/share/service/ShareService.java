@@ -2,8 +2,6 @@ package com.example.fromis_7_be.share.service;
 
 import com.example.fromis_7_be.piece.entity.Piece;
 import com.example.fromis_7_be.piece.repository.PieceRepository;
-import com.example.fromis_7_be.piece.service.PieceService;
-import com.example.fromis_7_be.share.dto.ShareRequest;
 import com.example.fromis_7_be.share.dto.ShareResponse;
 import com.example.fromis_7_be.share.entity.Share;
 import com.example.fromis_7_be.share.repository.ShareRepository;
@@ -19,20 +17,19 @@ public class ShareService {
     private final ShareRepository shareRepository;
     private final PieceRepository pieceRepository;
 
-    public void createShareURL(Long pieceId, String shareURL) {
+    public ShareResponse.ShareRead createShareURL(Long pieceId, String shareURL) {
         Optional<Piece> p = pieceRepository.findById(pieceId);
-        Piece piece = p.get();
+        Piece piece = p.orElseThrow(() -> new IllegalArgumentException("Piece not found with id: " + pieceId));
 
-        Share share = new Share(null , shareURL , LocalDateTime.now() , piece);
+        Share share = new Share(null, shareURL, LocalDateTime.now(), piece);
         shareRepository.save(share);
+
+        piece.updateShare(share); // Piece에 Share를 설정
+        pieceRepository.save(piece); // 업데이트된 Piece 저장
+
+        return ShareResponse.ShareRead.from(share);
     }
 
-//    public void createPost(Long userid, PostRequestDto.PostCreateRequest req){
-//        Optional<User> u = userRepo.findById(userid);
-//        User user = u.get();
-//        Post post = Post.form(req.getTitle(), req.getContent(), user);
-//        postRepo.save(post);
-//    }
 
     public ShareResponse.ShareRead getShareURL(Long shareId) {
         Optional<Share> s = shareRepository.findById(shareId);

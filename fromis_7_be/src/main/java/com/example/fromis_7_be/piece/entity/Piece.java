@@ -51,9 +51,9 @@ public class Piece {
     @OneToMany(mappedBy = "piece", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL) // 관계 매핑 및 연관된 엔티티 자동 저장
-    @JoinColumn(name = "piece_id") // 외래 키 컬럼 이름 지정
-    private Share share;
+    @OneToOne
+    @JoinColumn(name = "share_id") // Piece가 외래 키를 소유
+    private Share share; // 관계의 소유 쪽
 
     @PrePersist
     protected void onCreate() {
@@ -95,6 +95,10 @@ public class Piece {
         this.endMonth = endMonth;
         this.endDay = endDay;
         this.modifiedAt = LocalDateTime.now(); // 수정 시간 갱신
+    }
+
+    public void updateShare(Share share) {
+        this.share = share;
     }
 
 }
