@@ -8,6 +8,7 @@ import com.example.fromis_7_be.user.entity.User;
 import com.example.fromis_7_be.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class UnlikeService {
     private final ListupRepository listupRepository;
     private final UserRepository userRepository;
 
+    @Transactional
     public boolean createUnlike(Long userId, Long listupId) {
         Optional<Listup> l = listupRepository.findById(listupId);
         Listup listup = l.get();
