@@ -20,6 +20,7 @@ public class CategoryResponse {
         private Long cateId;
         private String name;
         private String color;
+        private Long pieceId;
         private String pieceTitle;
         private Boolean isHighlighted;
         private List<ListupResponse.ListupReadResponse> lists;
@@ -28,6 +29,7 @@ public class CategoryResponse {
             return CategoryReadResponse.builder()
                     .cateId(category.getId())
                     .name(category.getName())
+                    .pieceId(category.getPiece().getId())
                     .pieceTitle(category.getPiece().getTitle())
                     .isHighlighted(category.getIsHighlighted())
                     .lists(category.getLists().stream()
