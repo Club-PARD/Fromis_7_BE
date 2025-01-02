@@ -41,12 +41,10 @@ public class AlarmController {
      * 사용자 알림 메시지 리스트 반환
      */
     @GetMapping("/notifications")
-    @Operation(summary = "알림 List<String> 형식으로 response 합니다.")
-    public MsgResponseDto getNotifications(@RequestParam Long userId) {
-        List<String> notifications = alarmService.getNotifications(userId);
-        return new MsgResponseDto(notifications, LocalDateTime.now());
+    @Operation(summary = "알림 리스트를 MsgResponseDto 형식으로 반환합니다.")
+    public List<MsgResponseDto> getNotifications(@RequestParam Long userId) {
+        return alarmService.getNotifications(userId);
     }
-
     /**
      * Authorization 헤더에서 사용자 ID 추출
      */
