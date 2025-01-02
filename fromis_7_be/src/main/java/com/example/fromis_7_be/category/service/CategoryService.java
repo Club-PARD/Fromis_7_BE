@@ -63,6 +63,7 @@ public class CategoryService {
                         .cateId(category.getId())
                         .name(category.getName())
                         .color(category.getColor())
+                        .pieceTitle(category.getPiece().getTitle())
                         .isHighlighted(category.getIsHighlighted())
                         .lists(category.getLists().stream()
                                 .map(ListupResponse.ListupReadResponse::from) // 변환 로직
@@ -102,6 +103,7 @@ public class CategoryService {
                 .cateId(category.getId())
                 .name(category.getName())
                 .color(category.getColor())
+                .pieceTitle(category.getPiece().getTitle())
                 .isHighlighted(category.getIsHighlighted())
                 .lists(category.getLists().stream()
                         .map(ListupResponse.ListupReadResponse::from)
