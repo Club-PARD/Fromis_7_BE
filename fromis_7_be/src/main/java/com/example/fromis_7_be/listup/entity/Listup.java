@@ -26,7 +26,10 @@ public class Listup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long listId;
     private String name; //meta data로 가져온 컨텐츠 이름
+
+    @Column(name = "url", length = 2083) // 컬럼 길이를 DB와 일치시킴
     private String url;
+
     private String image; //meta 데이터 이미지
 
     @Lob private String description; //여기 주택 너무 예쁨
