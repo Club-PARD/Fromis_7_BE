@@ -26,7 +26,6 @@ public class PieceResponse {
         private Integer endYear;
         private Integer endMonth;
         private Integer endDay;
-        private List<Category> categories;
         private LocalDateTime createdAt;
         //private int likeCount;
         //private boolean likedByCurrentUser;
@@ -47,10 +46,6 @@ public class PieceResponse {
                     .createdAt(piece.getCreatedAt())
                     .build();
         }
-        public void setCategories(List<Category> categories) {
-            this.categories = categories;
-        }
     }
-
 
 }

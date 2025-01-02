@@ -35,8 +35,10 @@ public class PieceService {
     public PieceResponse.PieceReadResponse createPieceByUserId(Long userId, PieceRequest.PieceCreateRequest req){
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 User 정보: " + userId + "가 존재하지 않습니다."));
+
         Piece piece = Piece.from(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
                 req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay());
+
         pieceRepository.save(piece);
 
         UserPiece userPiece = UserPiece.builder()
@@ -47,6 +49,7 @@ public class PieceService {
         userPieceRepository.save(userPiece);
         // 알림 생성 및 전송
         alarmService.notifyPieceCreated(user, piece);
+
         return PieceResponse.PieceReadResponse.from(piece);
     }
 
@@ -55,12 +58,12 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("\"찾으시는 User 정보: \" + userId + \"가 존재하지 않습니다.\""));
 
         List<Piece> pieces = pieceRepository.findAllByUser(user);
-        List<Category> highlightCategories = categoryRepository.findByHighlight(PageRequest.of(0, 4));
+//        List<Category> highlightCategories = categoryRepository.findByHighlight(PageRequest.of(0, 4));
 
         return pieces.stream()
                 .map(piece -> {
                     PieceResponse.PieceReadResponse response = PieceResponse.PieceReadResponse.from(piece);
-                    response.setCategories(highlightCategories); // 하이라이트 카테고리 추가
+//                    response.setCategories(highlightCategories); // 하이라이트 카테고리 추가
                     return response;
                 })
                 .collect(Collectors.toList());
@@ -72,11 +75,10 @@ public class PieceService {
 
         piece.update(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
                 req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay());
+
         pieceRepository.save(piece);
 
-        return new PieceResponse.PieceReadResponse(piece.getId(), piece.getTitle(), piece.getMemberNames(),
-                piece.getColor(), piece.getStartYear(), piece.getStartMonth(), piece.getStartDay(), piece.getEndYear(),
-                piece.getEndMonth(), piece.getEndDay(), piece.getCategories(), piece.getCreatedAt());
+        return PieceResponse.PieceReadResponse.from(piece);
     }
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public void delete(Long pieceId){
