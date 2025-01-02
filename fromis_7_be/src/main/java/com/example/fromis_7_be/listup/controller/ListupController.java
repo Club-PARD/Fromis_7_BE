@@ -27,15 +27,16 @@ public class ListupController {
     private final ListupService listupService;
     private final CategoryRepository categoryRepository;
     private final ListupRepository listupRepository;
+
     @PostMapping("/{categoryId}")
     @Operation(summary = "list 생성, categoryid 참조")
     public ResponseEntity<List<ListupResponse.ListupReadResponse>> createListupByCate(
-            @PathVariable Long cateId,
+            @PathVariable Long categoryId,
             @RequestBody List<ListupRequest.ListupCreateRequest> req) {
 
         // 1. 카테고리 조회
-        Category category = categoryRepository.findById(cateId)
-                .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + cateId + "가 존재하지 않습니다."));
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 
         // 2. 요청 데이터를 Listup 엔티티로 변환 및 저장
         List<Listup> listups = req.stream()

@@ -68,17 +68,6 @@ public class ListupService {
         listupRepository.deleteAll(listups);
     }
 
-//    @Transactional
-//    public ListupResponse.ListupReadResponse updateListupById(Long listId, String description) {
-//        Listup listup = listupRepository.findById(listId)
-//                .orElseThrow(() -> new NoSuchElementException("Listup not found: " + listId));
-//
-//        listup.update(description);
-//        listupRepository.save(listup);
-//
-//        return ListupResponse.ListupReadResponse.from(listup);
-//    }
-
     @Transactional
     public ListupResponse.ListupReadResponse updateListupById(Long listId, ListupRequest.ListupUpdateRequest req) {
         Listup listup = listupRepository.findById(listId)

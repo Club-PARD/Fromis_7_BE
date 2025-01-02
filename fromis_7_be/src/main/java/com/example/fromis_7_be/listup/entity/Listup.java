@@ -70,7 +70,6 @@ public class Listup {
     }
 
     public void update(String description) {
-
         this.description = description;
         this.modifiedAt = LocalDateTime.now();
     }
