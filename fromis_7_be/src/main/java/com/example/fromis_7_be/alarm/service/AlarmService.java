@@ -94,13 +94,11 @@ public class AlarmService {
     /**
      * 사용자 알림 조회
      */
-    public List<String> getNotifications(Long userId) {
-        // 알림 메시지를 DB에서 조회하거나 메모리 맵에서 가져옵니다.
+    public List<MsgResponseDto> getNotifications(Long userId) {
         return alarmRepository.findAllByUserId(userId).stream()
-                .map(Alarm::getMessage) // 알림 메시지만 추출
+                .map(alarm -> new MsgResponseDto(alarm.getMessage(), alarm.getCreatedAt()))
                 .collect(Collectors.toList());
     }
-
     /**
      * piece 생성 알림
      */

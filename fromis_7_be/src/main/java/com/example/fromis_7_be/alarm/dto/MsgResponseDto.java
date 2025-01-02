@@ -9,6 +9,6 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class MsgResponseDto {
-    private List<String> data;           // 추가 데이터
+    private String data;           // 추가 데이터
     private LocalDateTime createdAt;
 }
