@@ -8,6 +8,7 @@ import com.example.fromis_7_be.listup.dto.ListupResponse;
 import com.example.fromis_7_be.listup.entity.Listup;
 import com.example.fromis_7_be.listup.repository.ListupRepository;
 import com.example.fromis_7_be.metadata.service.MetadataService;
+import org.joda.time.LocalDateTime;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -67,12 +68,23 @@ public class ListupService {
         listupRepository.deleteAll(listups);
     }
 
+//    @Transactional
+//    public ListupResponse.ListupReadResponse updateListupById(Long listId, String description) {
+//        Listup listup = listupRepository.findById(listId)
+//                .orElseThrow(() -> new NoSuchElementException("Listup not found: " + listId));
+//
+//        listup.update(description);
+//        listupRepository.save(listup);
+//
+//        return ListupResponse.ListupReadResponse.from(listup);
+//    }
+
     @Transactional
-    public ListupResponse.ListupReadResponse updateListupById(Long listId, String description) {
+    public ListupResponse.ListupReadResponse updateListupById(Long listId, ListupRequest.ListupUpdateRequest req) {
         Listup listup = listupRepository.findById(listId)
                 .orElseThrow(() -> new NoSuchElementException("Listup not found: " + listId));
 
-        listup.update(description);
+        listup.update(req.getDescription());
         listupRepository.save(listup);
 
         return ListupResponse.ListupReadResponse.from(listup);

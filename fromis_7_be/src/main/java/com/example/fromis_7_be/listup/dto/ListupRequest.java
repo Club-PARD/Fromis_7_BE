@@ -21,9 +21,7 @@ public class ListupRequest {
     @Getter
     @AllArgsConstructor
     public static class ListupUpdateRequest {
-        private String name;
-        private String url;
-        private String image;
         private String description;
+        private LocalDateTime modifiedAt;
     }
 }

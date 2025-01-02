@@ -62,8 +62,8 @@ public class ListupController {
     @Operation(summary = "list description 수정하기, listId 참조")
     public ResponseEntity<ListupResponse.ListupReadResponse> updateListupDescription(
             @PathVariable Long listId,
-            @RequestBody String description) {
-        ListupResponse.ListupReadResponse response = listupService.updateListupById(listId, description);
+            @RequestBody ListupRequest.ListupUpdateRequest req) {
+        ListupResponse.ListupReadResponse response = listupService.updateListupById(listId, req);
         return ResponseEntity.ok(response);
     }
 
