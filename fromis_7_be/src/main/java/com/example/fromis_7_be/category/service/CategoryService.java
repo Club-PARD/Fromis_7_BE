@@ -79,7 +79,7 @@ public class CategoryService {
         categoryRepository.delete(category);
     }
     @Transactional
-    public CategoryResponse.CategoryReadResponse updateByCategoryId(Long categoryId, boolean isHighlighted){
+    public CategoryResponse.CategoryReadResponse updateByCategoryId(Long categoryId, Boolean isHighlighted){
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 category 정보: " + categoryId + "가 존재하지 않습니다."));
 

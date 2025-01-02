@@ -42,7 +42,7 @@ public class CategoryController {
     @Operation(summary = "category 북마크(highlight) 수정하기, categoryId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> updateCategoryHighlight(
             @PathVariable Long categoryId,
-            @RequestParam boolean isHighlighted) {
+            @RequestParam Boolean isHighlighted) {
         CategoryResponse.CategoryReadResponse updatedCategory = categoryService.updateByCategoryId(categoryId, isHighlighted);
         return ResponseEntity.ok(updatedCategory);
     }
