@@ -23,6 +23,7 @@ public class CategoryResponse {
         private Long pieceId;
         private String pieceTitle;
         private Boolean isHighlighted;
+
         private List<ListupResponse.ListupReadResponse> lists;
 
         public static  CategoryReadResponse from(Category category){

@@ -23,5 +23,6 @@ public class PieceRequest {
         private Integer endYear;
         private Integer endMonth;
         private Integer endDay;
+        private Integer highlightCount;
     }
 }

@@ -27,6 +27,7 @@ public class PieceResponse {
         private Integer endMonth;
         private Integer endDay;
         private LocalDateTime createdAt;
+        private Integer highlightCount;
         //private int likeCount;
         //private boolean likedByCurrentUser;
 
@@ -44,6 +45,7 @@ public class PieceResponse {
                     .endMonth(piece.getEndMonth())
                     .endDay(piece.getEndDay())
                     .createdAt(piece.getCreatedAt())
+                    .highlightCount(piece.getHighlightCount())
                     .build();
         }
     }
