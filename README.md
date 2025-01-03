@@ -20,7 +20,7 @@
   <p align="center">
     참여자와 주최자가 여행 준비를 원활하게 할 수 있도록 돕는 양방향 소통 플랫폼
         <br />
-            <a href="https://github.com/4th-PARD-WEB-PART/shortkathon?tab=readme-ov-file"><strong>Explore the docs »</strong></a>
+            <a href="https://github.com/Club-PARD/Fromis_7_BE"><strong>Explore the docs »</strong></a>
         <br />
     <br />
   </p>
