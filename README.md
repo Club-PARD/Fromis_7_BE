@@ -121,7 +121,3 @@
 - [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
 
 ---
-
-### 📬 **문의 및 협업**
-
-더 많은 정보를 원하신다면 [GitHub Repo](https://github.com/Club-PARD/Fromis_7_BE)를 확인해주세요! 😊
