@@ -35,6 +35,12 @@
 
 ---
 
+### 💡 **API Documentation**
+
+- [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
+
+---
+
 ### 📑 **Pages Overview**
 
 #### **1. 랜딩 페이지**
@@ -116,8 +122,3 @@
 
 ---
 
-### 💡 **API Documentation**
-
-- [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
-
----
