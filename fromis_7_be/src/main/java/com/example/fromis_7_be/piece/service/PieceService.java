@@ -72,7 +72,7 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("Piece ID " + pieceId + "를 찾을 수 없습니다."));
 
         piece.update(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
-                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay(), req.getHighlightCount());
+                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay(), piece.getHighlightCount());
 
         pieceRepository.save(piece);
 
