@@ -41,6 +41,33 @@
 
 ---
 
+### 🛠️ **Backend Tech Stack**
+
+| 기술          | 설명                                    |
+|---------------|---------------------------------------|
+| **프레임워크** | Spring Boot                           |
+| **DB 관리**    | JPA (Hibernate)                      |
+| **API 설계**   | RESTful 방식                          |
+| **파일 관리**  | AWS S3                                |
+| **배포 환경**  | AWS EC2                               |
+| **문서화**     | Swagger (OpenAPI 1.0)                |
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
+</p>
+
+---
+
+### 📊 **ERD (Entity Relationship Diagram)**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" width="70%" alt="ERD">
+</p>
+
+---
+
 ### 📑 **Pages Overview**
 
 #### **1. 랜딩 페이지**
@@ -74,42 +101,6 @@
 #### **8. 댓글 페이지**
 - **기능**: 비동기 소통 인터페이스 제공.
 <p align="center"><img src="https://github.com/user-attachments/assets/8aeb88df-a209-4178-b060-b3305ed72870" width="40%" alt="댓글 페이지"></p>
-
----
-
-### 🛠️ **Backend Tech Stack**
-
-| 기술          | 설명                                    |
-|---------------|---------------------------------------|
-| **프레임워크** | Spring Boot                           |
-| **DB 관리**    | JPA (Hibernate)                      |
-| **API 설계**   | RESTful 방식                          |
-| **파일 관리**  | AWS S3                                |
-| **배포 환경**  | AWS EC2                               |
-| **문서화**     | Swagger (OpenAPI 1.0)                |
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
-  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-  <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
-</p>
-
----
-
-### 📊 **ERD (Entity Relationship Diagram)**
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" width="70%" alt="ERD">
-</p>
-
----
-
-### 🌐 **Deployment Information**
-
-| 항목       | 내용            |
-|------------|-----------------|
-| **배포 환경** | AWS EC2        |
-| **빌드 도구** | Gradle         |
 
 ---
 
