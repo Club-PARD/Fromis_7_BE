@@ -75,6 +75,22 @@ public class CategoryService {
                 ).collect(Collectors.toList());
     }
 
+    public CategoryResponse.CategoryReadResponse readCategoryById(Long categoryId) {
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new NoSuchElementException("찾으시는 piece 정보: " + categoryId + "가 존재하지 않습니다."));
+        return CategoryResponse.CategoryReadResponse.builder()
+                .cateId(category.getId())
+                .name(category.getName())
+                .color(category.getColor())
+                .isHighlighted(category.getIsHighlighted())
+                .pieceId(category.getPiece().getId())
+                .pieceTitle(category.getPiece().getTitle())
+                .lists(category.getLists().stream()
+                        .map(ListupResponse.ListupReadResponse::from) // 변환 로직
+                        .collect(Collectors.toList()))
+                .build();
+    }
+
     @Transactional
     public void delete(Long categoryId){
         Category category = categoryRepository.findById(categoryId)

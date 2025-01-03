@@ -32,6 +32,13 @@ public class CategoryController {
         return categoryService.readCategoryByPiece(pieceId);
     }
 
+    @GetMapping("/read/{categoryId}")
+    @Operation(summary = "category 한개 조회")
+    public ResponseEntity<CategoryResponse.CategoryReadResponse> readCategory(@PathVariable Long categoryId) {
+        CategoryResponse.CategoryReadResponse readCategory = categoryService.readCategoryById(categoryId);
+        return ResponseEntity.ok(readCategory);
+    }
+
     @DeleteMapping("/{categoryId}")
     @Operation(summary = "category 삭제, categoryId 참조")
     public void deleteCategoryByCategoryId(@PathVariable Long categoryId) {
