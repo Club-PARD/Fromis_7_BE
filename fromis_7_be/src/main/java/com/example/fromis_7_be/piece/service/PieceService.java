@@ -58,12 +58,10 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("\"찾으시는 User 정보: \" + userId + \"가 존재하지 않습니다.\""));
 
         List<Piece> pieces = pieceRepository.findAllByUser(user);
-//        List<Category> highlightCategories = categoryRepository.findByHighlight(PageRequest.of(0, 4));
 
         return pieces.stream()
                 .map(piece -> {
                     PieceResponse.PieceReadResponse response = PieceResponse.PieceReadResponse.from(piece);
-//                    response.setCategories(highlightCategories); // 하이라이트 카테고리 추가
                     return response;
                 })
                 .collect(Collectors.toList());
