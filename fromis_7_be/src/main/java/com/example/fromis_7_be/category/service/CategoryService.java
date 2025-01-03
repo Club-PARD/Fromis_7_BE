@@ -92,8 +92,8 @@ public class CategoryService {
         Piece piece = category.getPiece();
 
         int highlightCount = 0;
-        for (int i = 0; i < category.getLists().size(); i++) {
-            if (isHighlighted) {
+        for (int i = 0; i < piece.getCategories().size(); i++) {
+            if (piece.getCategories().get(i).getIsHighlighted()) {
                 highlightCount++;
             }
         }
