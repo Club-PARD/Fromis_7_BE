@@ -48,6 +48,8 @@ public class CategoryService {
                 .name(category.getName())
                 .color(category.getColor())
                 .isHighlighted(category.getIsHighlighted())
+                .pieceId(category.getPiece().getId())
+                .pieceTitle(category.getPiece().getTitle())
                 .lists(category.getLists().stream()
                         .map(ListupResponse.ListupReadResponse::from)
                         .collect(Collectors.toList()))
@@ -88,14 +90,13 @@ public class CategoryService {
         category.setIsHighlighted(isHighlighted);
 
         Piece piece = category.getPiece();
-        Integer highlightCount = piece.getHighlightCount();
 
-        if(isHighlighted == true){
-            highlightCount++;
-        }else{
-            highlightCount--;
+        int highlightCount = 0;
+        for (int i = 0; i < category.getLists().size(); i++) {
+            if (isHighlighted) {
+                highlightCount++;
+            }
         }
-
         piece.updateHighlightCount(highlightCount);
 
         List<UserPiece> userPieces = userPieceRepository.findByPieceId(category.getPiece().getId());
