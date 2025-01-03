@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/82149023-5b3e-4179-b714-1a63e9a61777" width="50%" />
 </p>
@@ -9,11 +9,13 @@
 </div>
 <div>
 
+=======
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/82149023-5b3e-4179-b714-1a63e9a61777" width="50%" />
 </p>
 
+### 🚀 **L:nk - 여행 준비 플랫폼**
 
 <h3 align="center">L:nk</h3>
 
@@ -25,18 +27,14 @@
     <br />
   </p>
 </div>
->>>>>>> d580195 (Update README.md)
 
 ### 🚀 **L:nk - 여행 준비 플랫폼**
 
-<<<<<<< HEAD
 **참여자와 주최자가 여행 준비를 원활하게 할 수 있도록 돕는 양방향 소통 플랫폼**
 =======
->>>>>>> d580195 (Update README.md)
 
 # 📗 Table of Contents
 
-<<<<<<< HEAD
 ### 📖 **Introduction**
 
 **Link**는 여행 준비 과정에서 주최자와 참여자가 정보를 효율적으로 공유하고, 원활하게 소통할 수 있도록 돕는 플랫폼입니다.  
@@ -60,7 +58,6 @@
 참여자와 주최자가 여행 준비를 원활하게 할 수 있도록 돕는 양방향 소통 플랫폼
 
 ### 개요
->>>>>>> d580195 (Update README.md)
 
 Link는 여행 준비 과정에서 주최자와 참여자가 여행 정보를 한 눈에 보고, 효율적으로 의사결정을 내릴 수 있도록 돕는 웹 서비스입니다. 이 서비스는 여행 준비 중 발생하는 소통 문제를 해결하여, 의사결정에 소요되는 시간과 스트레스를 줄입니다. 모든 여행 관련 정보를 한 곳에서 관리하고, 참여자의 선호도를 쉽게 반영하여 원활한 의사소통을 가능하게 합니다.
 
@@ -161,6 +158,26 @@ Link는 여행 준비 과정에서 주최자와 참여자가 여행 정보를 �
 
 ### 🌟 **Team Members**
 
+=======
+**참여자와 주최자가 여행 준비를 원활하게 할 수 있도록 돕는 양방향 소통 플랫폼**
+
+---
+
+### 📖 **Introduction**
+
+**Link**는 여행 준비 과정에서 주최자와 참여자가 정보를 효율적으로 공유하고, 원활하게 소통할 수 있도록 돕는 플랫폼입니다.  
+여행 준비 중 발생하는 소통 문제를 해결하여 의사결정 시간을 단축하고 스트레스를 줄여줍니다.
+
+#### 주요 기능:
+1. **여행 카테고리 관리**: 숙소, 교통, 장소 등 카테고리별 정보 정리.
+2. **비동기적 커뮤니케이션**: 댓글, 선호/비선호를 통한 실시간 소통.
+3. **우선순위 갱신**: 선호도에 따라 정보를 자동 정렬.
+4. **자동 정보 생성**: URL 입력 시 관련된 제목과 이미지를 자동 생성.
+
+---
+
+### 🌟 **Team Members**
+
 | 이름   | 역할          |
 |--------|---------------|
 | 김희민 | 기획 / PM     |
@@ -176,6 +193,41 @@ Link는 여행 준비 과정에서 주최자와 참여자가 여행 정보를 �
 ### 💡 **API Documentation**
 
 - [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
+=======
+### 📑 **Pages Overview**
+
+#### **1. 랜딩 페이지**
+- **기능**: 웹사이트 방문 시 표시되는 메인 화면.
+<p align="center"><img src="https://github.com/user-attachments/assets/e4b8e66d-472f-44f1-bc77-b299c82c7fb5" width="40%" alt="랜딩 페이지"></p>
+
+#### **2. 로그인 페이지**
+- **기능**: 사용자 로그인 인터페이스.
+<p align="center"><img src="https://github.com/user-attachments/assets/de481da7-8f12-4559-a123-1523137f5252" width="40%" alt="로그인 페이지"></p>
+
+#### **3. 히스토리 페이지**
+- **기능**: 지난 여행 약속들을 한눈에 확인.
+<p align="center"><img src="https://github.com/user-attachments/assets/0e27527e-7cd5-4653-b1d0-1e0131c97f1b" width="40%" alt="히스토리 페이지"></p>
+
+#### **4. 메인 페이지 - 약속**
+- **기능**: 여행 약속을 생성하고 관리.
+<p align="center"><img src="https://github.com/user-attachments/assets/f1b41108-2028-48c3-8f36-cd455ad1c699" width="40%" alt="메인 페이지 - 약속"></p>
+
+#### **5. 메인 페이지 - 카테고리**
+- **기능**: 약속의 카테고리를 종합적으로 확인.
+<p align="center"><img src="https://github.com/user-attachments/assets/7796a3e1-a799-4cfc-9944-0aeb758f95ce" width="40%" alt="메인 페이지 - 카테고리"></p>
+
+#### **6. 추가/수정 페이지**
+- **기능**: 약속 및 카테고리 정보를 생성, 수정, 삭제.
+<p align="center"><img src="https://github.com/user-attachments/assets/d793e8af-0276-4ddd-9836-5c4743e54a1a" width="40%" alt="추가/수정 페이지"></p>
+
+#### **7. 마이페이지**
+- **기능**: 사용자 개인 정보 및 설정 확인.
+<p align="center"><img src="https://github.com/user-attachments/assets/631d9565-9621-432d-b4da-c2ded1e068b3" width="40%" alt="마이페이지"></p>
+
+#### **8. 댓글 페이지**
+- **기능**: 비동기 소통 인터페이스 제공.
+<p align="center"><img src="https://github.com/user-attachments/assets/8aeb88df-a209-4178-b060-b3305ed72870" width="40%" alt="댓글 페이지"></p>
+
 
 ---
 
@@ -251,19 +303,59 @@ Link는 여행 준비 과정에서 주최자와 참여자가 여행 정보를 �
 
 ---
 
-<<<<<<< HEAD
 =======
 ## 배포 정보 🌐
+=======
+### 🔑 **Backend Features**
 
-- **배포 환경**: AWS EC2
-- **빌드 도구**: Gradle
+1. **RESTful API 설계**  
+   - 직관적이고 일관된 API로 클라이언트-서버 통신 구현.
+
+2. **파일 업로드 및 관리**  
+   - AWS S3를 활용한 파일 저장 및 URL 제공.
+
+3. **우선순위 계산 로직**  
+   - 선호/비선호 데이터를 기반으로 실시간 우선순위 갱신.
+
+4. **자동 정보 생성 기능**  
+   - URL 입력 시 관련 정보(제목, 이미지) 자동 생성.
 
 ---
-## **백엔드 분담 작업 소개**
-| 이름  | 구현 기능 |
-|-------|-----------|
-| **김하진 🐿️** | - API 설계 및 데이터베이스 연동<br> - 로그인 및 JWT 인증<br> - RESTful API 최적화  |
-| **이수인 🐾** | - 우선순위 계산 로직 구현<br> - 댓글 및 선호/비선호 기능<br> - AWS S3 연동 및 파일 업로드 기능 |
+
+### 📊 **ERD (Entity Relationship Diagram)**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" width="70%" alt="ERD">
+</p>
 
 ---
->>>>>>> 021188f (Update README.md)
+
+### 🌐 **Deployment Information**
+
+| 항목       | 내용            |
+|------------|-----------------|
+| **배포 환경** | AWS EC2        |
+| **빌드 도구** | Gradle         |
+
+---
+
+### 🧑‍💻 **Backend Contributions**
+
+| 이름        | 구현 기능                              |
+|-------------|---------------------------------------|
+| **김하진**  | - API 설계 및 DB 연동<br>- JWT 인증<br>- RESTful API 최적화 |
+| **이수인**  | - 우선순위 계산 로직<br>- 댓글/선호 기능<br>- AWS S3 파일 업로드 |
+
+---
+
+### 💡 **API Documentation**
+
+- [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
+
+---
+
+=======
+
+### 📬 **문의 및 협업**
+
+더 많은 정보를 원하신다면 [GitHub Repo](https://github.com/Club-PARD/Fromis_7_BE)를 확인해주세요! 😊
