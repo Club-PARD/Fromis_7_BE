@@ -33,7 +33,7 @@ public class CategoryResponse {
                     .pieceId(category.getPiece().getId())
                     .pieceTitle(category.getPiece().getTitle())
                     .isHighlighted(category.getIsHighlighted())
-                    .lists(category.getLists().stream()
+                   .lists(category.getLists().stream()
                             .map(ListupResponse.ListupReadResponse::from) // 변환
                             .toList())
                     .build();
