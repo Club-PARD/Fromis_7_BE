@@ -35,6 +35,39 @@
 
 ---
 
+### 💡 **API Documentation**
+
+- [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
+
+---
+
+### 🛠️ **Backend Tech Stack**
+
+| 기술          | 설명                                    |
+|---------------|---------------------------------------|
+| **프레임워크** | Spring Boot                           |
+| **DB 관리**    | JPA (Hibernate)                      |
+| **API 설계**   | RESTful 방식                          |
+| **파일 관리**  | AWS S3                                |
+| **배포 환경**  | AWS EC2                               |
+| **문서화**     | Swagger (OpenAPI 1.0)                |
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
+</p>
+
+---
+
+### 📊 **ERD (Entity Relationship Diagram)**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" width="70%" alt="ERD">
+</p>
+
+---
+
 ### 📑 **Pages Overview**
 
 #### **1. 랜딩 페이지**
@@ -71,53 +104,12 @@
 
 ---
 
-### 🛠️ **Backend Tech Stack**
-
-| 기술          | 설명                                    |
-|---------------|---------------------------------------|
-| **프레임워크** | Spring Boot                           |
-| **DB 관리**    | JPA (Hibernate)                      |
-| **API 설계**   | RESTful 방식                          |
-| **파일 관리**  | AWS S3                                |
-| **배포 환경**  | AWS EC2                               |
-| **문서화**     | Swagger (OpenAPI 1.0)                |
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" />
-  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-  <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
-</p>
-
----
-
-### 📊 **ERD (Entity Relationship Diagram)**
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/3cd5c972-208d-4811-931c-7689adc0501d" width="70%" alt="ERD">
-</p>
-
----
-
-### 🌐 **Deployment Information**
-
-| 항목       | 내용            |
-|------------|-----------------|
-| **배포 환경** | AWS EC2        |
-| **빌드 도구** | Gradle         |
-
----
-
 ### 🧑‍💻 **Backend Contributions**
 
 | 이름        | 구현 기능                              |
 |-------------|---------------------------------------|
-| **김하진**  | - API 설계 및 DB 연동<br>- JWT 인증<br>- RESTful API 최적화 |
-| **이수인**  | - 우선순위 계산 로직<br>- 댓글/선호 기능<br>- AWS S3 파일 업로드 |
+| **🐿️ 김하진**  | - API 설계 및 DB 연동<br>- JWT 인증<br>- RESTful API 최적화 |
+| **🐾 이수인**  | - 우선순위 계산 로직<br>- 댓글/선호 기능<br>- AWS S3 파일 업로드 |
 
 ---
 
-### 💡 **API Documentation**
-
-- [API 명세서](https://noisy-sunscreen-6be.notion.site/Fromis7_API-165464b1b207805d9600de8d4b7e03ac?pvs=4)
-
----
