@@ -37,7 +37,7 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("찾으시는 User 정보: " + userId + "가 존재하지 않습니다."));
 
         Piece piece = Piece.from(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
-                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay());
+                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay(), 0);
 
         pieceRepository.save(piece);
 
@@ -58,12 +58,10 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("\"찾으시는 User 정보: \" + userId + \"가 존재하지 않습니다.\""));
 
         List<Piece> pieces = pieceRepository.findAllByUser(user);
-//        List<Category> highlightCategories = categoryRepository.findByHighlight(PageRequest.of(0, 4));
 
         return pieces.stream()
                 .map(piece -> {
                     PieceResponse.PieceReadResponse response = PieceResponse.PieceReadResponse.from(piece);
-//                    response.setCategories(highlightCategories); // 하이라이트 카테고리 추가
                     return response;
                 })
                 .collect(Collectors.toList());
@@ -74,7 +72,7 @@ public class PieceService {
                 .orElseThrow(() -> new NoSuchElementException("Piece ID " + pieceId + "를 찾을 수 없습니다."));
 
         piece.update(req.getTitle(), req.getMemberNames(), req.getColor(), req.getStartYear(),
-                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay());
+                req.getStartMonth(), req.getStartDay(), req.getEndYear(), req.getEndMonth(), req.getEndDay(), req.getHighlightCount());
 
         pieceRepository.save(piece);
 

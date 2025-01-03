@@ -18,7 +18,7 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @PostMapping("{pieceId}")
+    @PostMapping("/{pieceId}")
     @Operation(summary = "category 생성, pieceId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> createCategoryByPiece(@PathVariable Long pieceId,
                                                                                        @RequestBody CategoryRequest.CategoryCreateRequest req) {
@@ -32,13 +32,13 @@ public class CategoryController {
         return categoryService.readCategoryByPiece(pieceId);
     }
 
-    @DeleteMapping("{categoryId}")
+    @DeleteMapping("/{categoryId}")
     @Operation(summary = "category 삭제, categoryId 참조")
     public void deleteCategoryByCategoryId(@PathVariable Long categoryId) {
         categoryService.delete(categoryId);
     }
 
-    @PatchMapping("/{pieceId}/{categoryId}")
+    @PatchMapping("/patchHighlight/{categoryId}")
     @Operation(summary = "category 북마크(highlight) 수정하기, categoryId 참조")
     public ResponseEntity<CategoryResponse.CategoryReadResponse> updateCategoryHighlight(
             @PathVariable Long categoryId,

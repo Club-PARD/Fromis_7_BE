@@ -37,6 +37,7 @@ public class Piece {
     private Integer endYear;
     private Integer endMonth;
     private Integer endDay;
+    private Integer highlightCount = 0;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -66,9 +67,13 @@ public class Piece {
     }
 
 
+    public void updateHighlightCount(Integer highlightCount) {
+        this.highlightCount = highlightCount;
+    }
+
     public static Piece from(String title, List<String> memberNames, String color,
                              Integer startYear, Integer startMonth, Integer startDay,
-                             Integer endYear, Integer endMonth, Integer endDay) {
+                             Integer endYear, Integer endMonth, Integer endDay, Integer highlightCount) {
         return Piece.builder()
                 .title(title)
                 .memberNames(memberNames)
@@ -79,12 +84,13 @@ public class Piece {
                 .endYear(endYear)
                 .endMonth(endMonth)
                 .endDay(endDay)
+                .highlightCount(highlightCount)
                 .build();
     }
     // 업데이트 메서드 구현
     public void update(String title, List<String> memberNames, String color,
                        Integer startYear, Integer startMonth, Integer startDay,
-                       Integer endYear, Integer endMonth, Integer endDay) {
+                       Integer endYear, Integer endMonth, Integer endDay, Integer highlightCount) {
         this.title = title;
         this.memberNames = memberNames;
         this.color = color;
@@ -94,6 +100,7 @@ public class Piece {
         this.endYear = endYear;
         this.endMonth = endMonth;
         this.endDay = endDay;
+        this.highlightCount = highlightCount;
         this.modifiedAt = LocalDateTime.now(); // 수정 시간 갱신
     }
 
